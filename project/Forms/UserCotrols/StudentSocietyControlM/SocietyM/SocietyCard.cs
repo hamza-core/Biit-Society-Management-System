@@ -1,5 +1,4 @@
-﻿using Microsoft.Xaml.Behaviors;
-using project.DataHandlers;
+﻿using project.DataHandlers;
 using project.DataHandlers.ViewModel;
 using project.Forms.StudentControlM;
 using project.Forms.StudentSocietyControlM.EventM;
@@ -13,9 +12,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
-using System.Windows.Media;
 
 namespace project.Forms.StudentSocietyControlM
 {

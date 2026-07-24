@@ -1,5 +1,4 @@
-﻿using MaterialDesignColors.Recommended;
-using project.DataHandlers.ViewModel;
+﻿using project.DataHandlers.ViewModel;
 using project.Models;
 using project.Utilities;
 using System;
