@@ -1,20 +1,23 @@
-```gitignore
 # Build artifacts
-*.obj
 *.exe
 *.dll
-*.so
-*.a
-*.out
+*.pdb
+*.userprefs
+*.cache
+*.compiled
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
 
 # Dependencies
 packages/
-bin/
-obj/
+node_modules/
+.nuget/
+.nuget.packages/
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
 
 # Environment
 .env
@@ -23,16 +26,20 @@ obj/
 
 # Editors
 .vs/
-.ReSharper*/
-*.userprefs
-*.userosscache
-*.suo
-*.user
-*.aps
-*.ilk
-*.iobj
-*.ipdb
-*.pdb
-*.pgc
-*.pgd
-```
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test and coverage
+coverage/
+htmlcov/
+.coverage
+*.coverage
+
+# Temporary files
+*.tmp
+*.temp
