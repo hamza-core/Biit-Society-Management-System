@@ -1,4 +1,3 @@
-﻿using Newtonsoft.Json;
 using project.DataHandlers;
 using project.DataHandlers.ViewModel;
 using project.Models;
@@ -85,7 +84,7 @@ namespace project.Forms.UserCotrols
 
             if (string.IsNullOrEmpty(json)) return;
 
-            dynamicFields = JsonConvert.DeserializeObject<List<FormField>>(json);
+            dynamicFields = DeserializeFormFields(json);
 
             int row = 0;
 
@@ -200,7 +199,7 @@ namespace project.Forms.UserCotrols
 
             if (string.IsNullOrEmpty(json)) return;
 
-            dynamicFields = JsonConvert.DeserializeObject<List<FormField>>(json);
+            dynamicFields = DeserializeFormFields(json);
 
             foreach (var field in dynamicFields)
             {
@@ -283,7 +282,7 @@ namespace project.Forms.UserCotrols
             }
 
             // 2. Serialize form data
-            string jsonData = JsonConvert.SerializeObject(formData);
+            string jsonData = SerializeFormData(formData);
 
             // 3. Check if this is a team event
             if (selectedEvent.TeamRequired != "None")
@@ -418,3 +417,64 @@ namespace project.Forms.UserCotrols
         }
     }
 }
+
+        private List<FormField> DeserializeFormFields(string json)
+        {
+            // Simple JSON parsing without Newtonsoft
+            var fields = new List<FormField>();
+            if (string.IsNullOrEmpty(json)) return fields;
+            
+            // Remove array brackets
+            json = json.Trim('[', ']');
+            if (string.IsNullOrEmpty(json)) return fields;
+            
+            // Split by object boundaries (simplified parsing)
+            var objects = json.Split(new[] { "},{" }, StringSplitOptions.None);
+            foreach (var obj in objects)
+            {
+                var field = new FormField();
+                if (obj.Contains("\"FieldName\""))
+                {
+                    var start = obj.IndexOf("\"FieldName\":\"") + 13;
+                    var end = obj.IndexOf("\"", start);
+                    if (start > 12 && end > start)
+                        field.FieldName = obj.Substring(start, end - start);
+                }
+                if (obj.Contains("\"FieldType\""))
+                {
+                    var start = obj.IndexOf("\"FieldType\":\"") + 13;
+                    var end = obj.IndexOf("\"", start);
+                    if (start > 12 && end > start)
+                        field.FieldType = obj.Substring(start, end - start);
+                }
+                if (obj.Contains("\"IsRequired\""))
+                {
+                    field.IsRequired = obj.Contains("\"IsRequired\":true");
+                }
+                if (obj.Contains("\"Label\""))
+                {
+                    var start = obj.IndexOf("\"Label\":\"") + 9;
+                    var end = obj.IndexOf("\"", start);
+                    if (start > 8 && end > start)
+                        field.Label = obj.Substring(start, end - start);
+                }
+                fields.Add(field);
+            }
+            return fields;
+        }
+
+        private string SerializeFormData(Dictionary<string, string> formData)
+        {
+            // Simple JSON serialization without Newtonsoft
+            var sb = new StringBuilder();
+            sb.Append("{");
+            bool first = true;
+            foreach (var kvp in formData)
+            {
+                if (!first) sb.Append(",");
+                sb.Append($"\"{kvp.Key}\":\"{kvp.Value}\"");
+                first = false;
+            }
+            sb.Append("}");
+            return sb.ToString();
+        }

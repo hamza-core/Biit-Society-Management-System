@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace project.Models
 {
     public class TeamMembership
     {
-        public int MembershipID { get; set; }
-        public int TeamID { get; set; }
-        public string AridNo { get; set; }
-        public bool IsDeleted { get; set; }
+        public int Id { get; set; }
+        public int TeamId { get; set; }
+        public string MemberAridNo { get; set; }
+        public string Role { get; set; }
+        public DateTime JoinedAt { get; set; }
     }
-
 }
