@@ -37,9 +37,10 @@ namespace project.Utilities
                 SenderId = addedByAridNo,
                 CreatedAt = DateTime.Now,
                 IsRead = false,
-                EventId = null // If linked to an event, set EventId accordingly
+                EventId = null
             };
 
+            NotificationViewModel.AddNotification(notification);
         }
 
 

@@ -32,6 +32,7 @@ namespace project.Theme
         public static readonly Color TextSecondary = Color.FromArgb(127, 140, 141);    // Silver
         public static readonly Color TextLight = Color.FromArgb(255, 255, 255);        // White
         public static readonly Color TextMuted = Color.FromArgb(189, 195, 199);        // Light Gray
+        public static readonly Color LegacyCornsilk = Color.FromArgb(255, 248, 220);   // Cornsilk (Legacy Support)
         
         // Status Colors
         public static readonly Color SuccessColor = Color.FromArgb(46, 204, 113);      // Nephritis Green
