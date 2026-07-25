@@ -1,45 +1,32 @@
+```
 # Build artifacts
+*.obj
 *.exe
 *.dll
 *.pdb
+*.user
+*.aps
+*.ilk
+*.iobj
+*.ipdb
+*.tlog
+*.exp
+*.lib
+*.metagen
+*.VC.db
+*.VC.VC.opendb
+
+# Release directories
+bin/
+obj/
+
+# User-specific files
 *.userprefs
-*.cache
-*.compiled
-**/bin/
-**/obj/
-**/Debug/
-**/Release/
+.vs/
+.user
 
-# Dependencies
-packages/
-node_modules/
-.nuget/
-.nuget.packages/
-
-# Logs
-*.log
-
-# Environment
+# Environment specific
 .env
 .env.local
-*.env.*
-
-# Editors
-.vs/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Test and coverage
-coverage/
-htmlcov/
-.coverage
-*.coverage
-
-# Temporary files
-*.tmp
-*.temp
+*.local
+```

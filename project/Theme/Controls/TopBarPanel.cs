@@ -82,7 +82,14 @@ namespace project.Theme.Controls
                 {
                     Capture = false;
                     var msg = Message.Create(parentForm.Handle, 0x112, (IntPtr)0xF012, IntPtr.Zero);
-                    parentForm.WndProc(ref msg);
+                    if (parentForm is Form f)
+                    {
+                        // Use reflection to call protected WndProc method
+                        var method = typeof(Form).GetMethod("WndProc", 
+                            System.Reflection.BindingFlags.Instance | 
+                            System.Reflection.BindingFlags.NonPublic);
+                        method?.Invoke(f, new object[] { msg });
+                    }
                 }
             };
         }

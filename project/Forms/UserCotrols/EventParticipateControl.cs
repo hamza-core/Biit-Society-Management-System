@@ -20,6 +20,7 @@ namespace project.Forms.UserCotrols
         {
             InitializeComponent();
         }
+        
         Student currentStudent;
         Event selectedEvent;
         List<FormField> dynamicFields;
@@ -35,8 +36,6 @@ namespace project.Forms.UserCotrols
             cmbSociety.DataSource = SocietyViewModel.GetSocietiesJoinedByStudent(currentStudent.AridNo);
             cmbSociety.DisplayMember = "Name";
             cmbSociety.ValueMember = "SocietyID";
-
-
         }
 
         private void cmbSociety_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,16 +48,14 @@ namespace project.Forms.UserCotrols
                 cmbEvent.ValueMember = "EventID";
             }
         }
-        Event ev;
+
         private void cmbEvent_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedEvent = (Event)cmbEvent.SelectedItem;
-            selectedEvent = (Event)cmbEvent.SelectedItem;
 
-            LoadTeamDropdown(selectedEvent.EventID);
             if (selectedEvent != null)
-
             {
+                LoadTeamDropdown(selectedEvent.EventID);
                 btnParticipate.Enabled = true;
             }
             else
@@ -66,17 +63,21 @@ namespace project.Forms.UserCotrols
                 btnParticipate.Enabled = false;
             }
         }
+
         private void LoadTeamDropdown(int eventId)
         {
             List<Team> teams = TeamViewModel.GetTeamsByEvent(eventId);
+            var membershipViewModel = new TeamMembershipViewModel();
+            
             List<Team> myTeams = teams.Where(t =>
-                new TeamMembershipViewModel().GetMembersByTeam(t.TeamID)
-                .Any(m => m.AridNo == currentStudent.AridNo)).ToList();
+                membershipViewModel.GetMembersByTeam(t.TeamID)
+                .Any(m => m.MemberAridNo == currentStudent.AridNo)).ToList();
 
             comboBox1.DataSource = teams;
             comboBox1.DisplayMember = "TeamName";
             comboBox1.ValueMember = "TeamID";
         }
+
         private void LoadDynamicForm(string json)
         {
             tableDynamicForm.Controls.Clear();
@@ -94,11 +95,10 @@ namespace project.Forms.UserCotrols
                 {
                     Text = field.FieldName,
                     AutoSize = true,
-                    Anchor = AnchorStyles.Right, // Align label to the right side of its cell
+                    Anchor = AnchorStyles.Right,
                     TextAlign = ContentAlignment.MiddleRight,
-
                     Margin = new Padding(3, 6, 3, 6),
-                    Padding = new Padding(left:0,right: 20, top: 0,bottom:0),
+                    Padding = new Padding(left: 0, right: 20, top: 0, bottom: 0),
                 };
 
                 Control control = null;
@@ -110,7 +110,6 @@ namespace project.Forms.UserCotrols
                         {
                             Name = "txt_" + field.FieldName,
                             Width = 200,
-
                             Anchor = AnchorStyles.Left
                         };
                         break;
@@ -126,6 +125,7 @@ namespace project.Forms.UserCotrols
                         cmb.Items.AddRange(field.FieldOptions.Split(','));
                         control = cmb;
                         break;
+                        
                     case "date":
                         control = new DateTimePicker
                         {
@@ -135,6 +135,7 @@ namespace project.Forms.UserCotrols
                             Anchor = AnchorStyles.Left
                         };
                         break;
+                        
                     case "checkbox":
                         control = new CheckBox
                         {
@@ -143,6 +144,7 @@ namespace project.Forms.UserCotrols
                             Anchor = AnchorStyles.Left
                         };
                         break;
+                        
                     case "radiobutton":
                         FlowLayoutPanel panel = new FlowLayoutPanel
                         {
@@ -165,7 +167,6 @@ namespace project.Forms.UserCotrols
 
                         control = panel;
                         break;
-
                 }
 
                 if (control != null)
@@ -192,52 +193,6 @@ namespace project.Forms.UserCotrols
             tableDynamicForm.Controls.Add(btn, 1, row);
         }
 
-
-/*        private void LoadDynamicForm(string json)
-        {
-            flowDynamicForm.Controls.Clear();
-
-            if (string.IsNullOrEmpty(json)) return;
-
-            dynamicFields = DeserializeFormFields(json);
-
-            foreach (var field in dynamicFields)
-            {
-                Label label = new Label {
-                    
-                Text = field.FieldName, Width = 100,Height = 50, AutoSize = false };
-                flowDynamicForm.Controls.Add(label);
-
-                Control control = null;
-
-                switch (field.FieldType.ToLower())
-                {
-                    case "textbox":
-                        control = new TextBox { Name = "txt_" + field.FieldName, Width = 200 };
-                        break;
-
-                    case "combobox":
-                        ComboBox cmb = new ComboBox { Name = "cmb_" + field.FieldName, Width = 200 };
-                        cmb.Items.AddRange(field.FieldOptions.Split(','));
-                        control = cmb;
-                        break;
-                }
-
-                if (control != null)
-                    flowDynamicForm.Controls.Add(control);
-            }
-
-            // ✅ Add Submit button once, after all fields
-            Button btn = new Button
-            {
-                Text = "Submit",
-                Width = 100,
-                Height = 30,
-                Name = "btnSubmit"
-            };
-            btn.Click += btn_Click;
-            flowDynamicForm.Controls.Add(btn);
-        }*/
         private void btn_Click(object sender, EventArgs e)
         {
             if (selectedEvent == null) return;
@@ -251,25 +206,23 @@ namespace project.Forms.UserCotrols
                 string value = "";
 
                 var control = tableDynamicForm.Controls.Find("txt_" + key, true).FirstOrDefault() ??
-                              tableDynamicForm.Controls.Find("cmb_" + key, true).FirstOrDefault();
+                              tableDynamicForm.Controls.Find("cmb_" + key, true).FirstOrDefault() ??
+                              tableDynamicForm.Controls.Find("dt_" + key, true).FirstOrDefault() ??
+                              tableDynamicForm.Controls.Find("chk_" + key, true).FirstOrDefault() ??
+                              tableDynamicForm.Controls.Find("rad_" + key, true).FirstOrDefault();
 
                 if (control is TextBox txt)
                     value = txt.Text;
                 else if (control is ComboBox cmb)
                     value = cmb.SelectedItem?.ToString();
-                // Example: Get value from DateTimePicker
-                if (control is DateTimePicker dt)
+                else if (control is DateTimePicker dt)
                     value = dt.Value.ToShortDateString();
-
-                // Example: Get value from CheckBox
                 else if (control is CheckBox cb)
                     value = cb.Checked.ToString();
-
-                // Example: Get selected RadioButton
                 else if (control is FlowLayoutPanel panel)
                 {
                     var selectedRadio = panel.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-                    value = selectedRadio?.Text;
+                    value = selectedRadio?.Text ?? "";
                 }
 
                 if (field.IsRequired && string.IsNullOrWhiteSpace(value))
@@ -298,7 +251,7 @@ namespace project.Forms.UserCotrols
                 var teamMembers = new TeamMembershipViewModel().GetMembersByTeam(selectedTeam.TeamID);
                 var leader = teamMembers.FirstOrDefault(m => m.Role.ToLower() == "leader");
 
-                if (leader == null || leader.AridNo != currentStudent.AridNo)
+                if (leader == null || leader.MemberAridNo != currentStudent.AridNo)
                 {
                     MessageBox.Show("Only the team leader can submit participation.");
                     return;
@@ -313,7 +266,7 @@ namespace project.Forms.UserCotrols
                     FeePaid = false,
                     PaymentDate = DateTime.Now,
                     IsDeleted = false,
-                    AdditionalData = jsonData // Store form response
+                    AdditionalData = jsonData
                 });
 
                 MessageBox.Show("Team participation recorded.");
@@ -329,15 +282,12 @@ namespace project.Forms.UserCotrols
                     FeePaid = false,
                     PaymentDate = DateTime.Now,
                     IsDeleted = false,
-                    AdditionalData = jsonData // Store form response
+                    AdditionalData = jsonData
                 });
 
                 MessageBox.Show("Individual participation recorded.");
             }
-
-
         }
-
 
         private void btnParticipate_Click(object sender, EventArgs e)
         {
@@ -362,7 +312,7 @@ namespace project.Forms.UserCotrols
                 var leader = teamMembers.FirstOrDefault(m => m.Role.ToLower() == "leader");
 
                 // Not leader
-                if (leader == null || leader.AridNo != currentStudent.AridNo)
+                if (leader == null || leader.MemberAridNo != currentStudent.AridNo)
                 {
                     ShowTeamDetailsInGroupBox(selectedTeam, teamMembers);
                     MessageBox.Show("Only the team leader can submit participation.");
@@ -372,23 +322,30 @@ namespace project.Forms.UserCotrols
                 // Is leader, show form
                 ShowTeamDetailsInGroupBox(selectedTeam, teamMembers);
                 MessageBoxHelper.ShowInfo("You are the leader. Please fill the form to participate.");
-                LoadDynamicForm(selectedEvent.FormStructure);
+                
+                // Serialize FormStructure list to JSON before passing
+                string formJson = SerializeFormStructure(selectedEvent.FormStructure);
+                LoadDynamicForm(formJson);
             }
             else
             {
                 // Individual participation
                 MessageBoxHelper.ShowInfo("Please fill the form to participate.");
-                LoadDynamicForm(selectedEvent.FormStructure);
+                
+                // Serialize FormStructure list to JSON before passing
+                string formJson = SerializeFormStructure(selectedEvent.FormStructure);
+                LoadDynamicForm(formJson);
             }
         }
+
         private void ShowTeamDetailsInGroupBox(Team team, List<TeamMembership> members)
         {
             groupBox1.Text = $"Team: {team.TeamName}";
-           flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.Controls.Clear();
 
             foreach (var member in members)
             {
-                var student = StudentViewModel.GetByAridNo(member.AridNo);
+                var student = StudentViewModel.GetByAridNo(member.MemberAridNo);
                 if (student == null) continue;
 
                 Label lbl = new Label
@@ -410,25 +367,20 @@ namespace project.Forms.UserCotrols
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedTeam = (Team)comboBox1.SelectedItem;
+            if (selectedTeam == null) return;
+            
             var teamMembers = new TeamMembershipViewModel().GetMembersByTeam(selectedTeam.TeamID);
-
             ShowTeamDetailsInGroupBox(selectedTeam, teamMembers);
-
         }
-    }
-}
 
         private List<FormField> DeserializeFormFields(string json)
         {
-            // Simple JSON parsing without Newtonsoft
             var fields = new List<FormField>();
             if (string.IsNullOrEmpty(json)) return fields;
-            
-            // Remove array brackets
+
             json = json.Trim('[', ']');
             if (string.IsNullOrEmpty(json)) return fields;
-            
-            // Split by object boundaries (simplified parsing)
+
             var objects = json.Split(new[] { "},{" }, StringSplitOptions.None);
             foreach (var obj in objects)
             {
@@ -458,14 +410,46 @@ namespace project.Forms.UserCotrols
                     if (start > 8 && end > start)
                         field.Label = obj.Substring(start, end - start);
                 }
+                if (obj.Contains("\"FieldOptions\""))
+                {
+                    var start = obj.IndexOf("\"FieldOptions\":\"") + 16;
+                    var end = obj.IndexOf("\"", start);
+                    if (start > 15 && end > start)
+                        field.FieldOptions = obj.Substring(start, end - start);
+                }
                 fields.Add(field);
             }
             return fields;
         }
 
+        private string SerializeFormStructure(List<FormField> formStructure)
+        {
+            if (formStructure == null || formStructure.Count == 0)
+                return "[]";
+
+            var sb = new StringBuilder();
+            sb.Append("[");
+            bool first = true;
+            foreach (var field in formStructure)
+            {
+                if (!first) sb.Append(",");
+                sb.Append("{");
+                sb.Append($"\"FieldName\":\"{field.FieldName}\"");
+                sb.Append($",\"FieldType\":\"{field.FieldType}\"");
+                if (!string.IsNullOrEmpty(field.FieldOptions))
+                    sb.Append($",\"FieldOptions\":\"{field.FieldOptions}\"");
+                sb.Append($",\"IsRequired\":{(field.IsRequired ? "true" : "false")}");
+                if (!string.IsNullOrEmpty(field.Label))
+                    sb.Append($",\"Label\":\"{field.Label}\"");
+                sb.Append("}");
+                first = false;
+            }
+            sb.Append("]");
+            return sb.ToString();
+        }
+
         private string SerializeFormData(Dictionary<string, string> formData)
         {
-            // Simple JSON serialization without Newtonsoft
             var sb = new StringBuilder();
             sb.Append("{");
             bool first = true;
@@ -478,3 +462,5 @@ namespace project.Forms.UserCotrols
             sb.Append("}");
             return sb.ToString();
         }
+    }
+}

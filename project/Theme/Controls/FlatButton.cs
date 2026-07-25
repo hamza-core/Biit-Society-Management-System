@@ -21,6 +21,7 @@ namespace project.Theme.Controls
         public Color PressedColor { get; set; } = ThemeManager.PrimaryDark;
         public Color TextColor { get; set; } = ThemeManager.TextLight;
         public Color DisabledColor { get; set; } = ThemeManager.TextMuted;
+        public Color HoverTextColor { get; set; } = ThemeManager.TextLight;
         
         public int BorderRadius { get; set; } = ThemeManager.ButtonBorderRadius;
         
