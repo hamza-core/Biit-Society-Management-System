@@ -33,16 +33,16 @@ WHERE sm.AridNo = @AridNo AND sm.isDeleted = 0 AND stm.IsDeleted = 0;
 ";
             var parameters = new Dictionary<string, object> { { "@AridNo", aridNo } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<SocietyTeamMembership> members = new List<SocietyTeamMembership>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyTeamMembership
                 {
                     MembershipID = Convert.ToInt32(row["MembershipID"]),
                     TeamID = Convert.ToInt32(row["TeamID"]),
-                    MemberID = row["MemberID"].ToString(),
+                    MemberID =int.Parse( row["MemberID"].ToString()),
                     Role = row["Role"].ToString(),
                     JoiningDate = Convert.ToDateTime(row["JoiningDate"]),
                     IsDeleted = Convert.ToBoolean(row["IsDeleted"])
@@ -59,16 +59,16 @@ WHERE sm.AridNo = @AridNo AND sm.isDeleted = 0 AND stm.IsDeleted = 0;
             string query = "SELECT * FROM SocietyTeamMembership WHERE TeamID = @TeamID AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@TeamID", teamId } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<SocietyTeamMembership> members = new List<SocietyTeamMembership>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyTeamMembership
                 {
                     MembershipID = Convert.ToInt32(row["MembershipID"]),
                     TeamID = Convert.ToInt32(row["TeamID"]),
-                    MemberID = row["MemberID"].ToString(),
+                    MemberID = int.Parse( row["MemberID"].ToString()),
                     Role = row["Role"].ToString(),
                     JoiningDate = Convert.ToDateTime(row["JoiningDate"]),
                     IsDeleted = Convert.ToBoolean(row["IsDeleted"])
@@ -120,16 +120,16 @@ WHERE sm.AridNo = @AridNo AND sm.isDeleted = 0 AND stm.IsDeleted = 0;
                 { "@Role", role }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<SocietyTeamMembership> filtered = new List<SocietyTeamMembership>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 filtered.Add(new SocietyTeamMembership
                 {
                     MembershipID = Convert.ToInt32(row["MembershipID"]),
                     TeamID = Convert.ToInt32(row["TeamID"]),
-                    MemberID = row["MemberID"].ToString(),
+                    MemberID = int.Parse( row["MemberID"].ToString()),
                     Role = row["Role"].ToString(),
                     JoiningDate = Convert.ToDateTime(row["JoiningDate"]),
                     IsDeleted = Convert.ToBoolean(row["IsDeleted"])

@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using project.Models;
+
 namespace project.Forms.UserCotrols
 {
     public partial class StudentNotificationControl : UserControl

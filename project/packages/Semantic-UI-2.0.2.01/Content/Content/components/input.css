@@ -54,7 +54,7 @@
 ---------------------*/
 
 
-/* browsers require these rules separate */
+/* ers require these rules separate */
 .ui.input input::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 0.4);
 }

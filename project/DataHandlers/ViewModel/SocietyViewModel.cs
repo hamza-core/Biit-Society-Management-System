@@ -42,17 +42,17 @@ namespace project.DataHandlers
         public static List<Society> GetAllSocieties()
         {
             string query = "SELECT * FROM Society WHERE IsDeleted = 0";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query);
 
             List<Society> societies = new List<Society>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 societies.Add(new Society
                 {
                     SocietyID = Convert.ToInt32(row["SocietyID"]),
                     Name = row["Name"].ToString(),
                     Description = row["Description"].ToString(),
-                    MentorID = row["MentorID"].ToString(),
+                    MentorID = int.Parse(row["MentorID"].ToString()),
                     IsDeleted = Convert.ToBoolean(row["IsDeleted"])
                 });
             }
@@ -76,7 +76,7 @@ namespace project.DataHandlers
                 SocietyID = Convert.ToInt32(row["SocietyID"]),
                 Name = row["Name"].ToString(),
                 Description = row["Description"].ToString(),
-                MentorID = row["MentorID"].ToString(),
+                MentorID = int.Parse(row["MentorID"].ToString()),
                 IsDeleted = Convert.ToBoolean(row["IsDeleted"])
             };
         }
@@ -105,17 +105,17 @@ namespace project.DataHandlers
                 { "@AridNo", AridNo }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<Society> societies = new List<Society>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 societies.Add(new Society
                 {
                     SocietyID = Convert.ToInt32(row["SocietyID"]),
                     Name = row["Name"].ToString(),
                     Description = row["Description"].ToString(),
-                    MentorID = row["MentorID"].ToString(),
+                    MentorID = int.Parse( row["MentorID"].ToString()),
                     IsDeleted = Convert.ToBoolean(row["IsDeleted"])
                 });
             }
@@ -138,7 +138,7 @@ namespace project.DataHandlers
                 SocietyID = Convert.ToInt32(row["SocietyID"]),
                 Name = row["Name"].ToString(),
                 Description = row["Description"].ToString(),
-                MentorID = row["MentorID"].ToString(),
+                MentorID = int.Parse(row["MentorID"].ToString()),
                 IsDeleted = Convert.ToBoolean(row["IsDeleted"])
             };
         }
@@ -151,17 +151,17 @@ namespace project.DataHandlers
                 { "@MentorID", mentorId }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<Society> societies = new List<Society>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 societies.Add(new Society
                 {
                     SocietyID = Convert.ToInt32(row["SocietyID"]),
                     Name = row["Name"].ToString(),
                     Description = row["Description"].ToString(),
-                    MentorID = row["MentorID"].ToString(),
+                    MentorID = int.Parse(row["MentorID"].ToString()),
                     IsDeleted = Convert.ToBoolean(row["IsDeleted"])
                 });
             }

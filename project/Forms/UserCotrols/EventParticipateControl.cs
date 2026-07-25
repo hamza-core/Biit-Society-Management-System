@@ -71,7 +71,7 @@ namespace project.Forms.UserCotrols
             
             List<Team> myTeams = teams.Where(t =>
                 membershipViewModel.GetMembersByTeam(t.TeamID)
-                .Any(m => m.MemberAridNo == currentStudent.AridNo)).ToList();
+                .Any(m => m.AridNo == currentStudent.AridNo)).ToList();
 
             comboBox1.DataSource = teams;
             comboBox1.DisplayMember = "TeamName";
@@ -171,7 +171,6 @@ namespace project.Forms.UserCotrols
 
                 if (control != null)
                 {
-                    tableDynamicForm.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                     tableDynamicForm.Controls.Add(label, 0, row);
                     tableDynamicForm.Controls.Add(control, 1, row);
                     row++;
@@ -179,7 +178,7 @@ namespace project.Forms.UserCotrols
             }
 
             // Add submit button in last row
-            Button btn = new Button
+            System.Windows.Forms.Button btn = new Button
             {
                 Text = "Submit",
                 Width = 100,
@@ -189,7 +188,7 @@ namespace project.Forms.UserCotrols
             };
             btn.Click += btn_Click;
 
-            tableDynamicForm.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            //tableDynamicForm.tyles.Add(newtyle(SizeType.AutoSize));
             tableDynamicForm.Controls.Add(btn, 1, row);
         }
 
@@ -251,7 +250,7 @@ namespace project.Forms.UserCotrols
                 var teamMembers = new TeamMembershipViewModel().GetMembersByTeam(selectedTeam.TeamID);
                 var leader = teamMembers.FirstOrDefault(m => m.Role.ToLower() == "leader");
 
-                if (leader == null || leader.MemberAridNo != currentStudent.AridNo)
+                if (leader == null || leader.AridNo != currentStudent.AridNo)
                 {
                     MessageBox.Show("Only the team leader can submit participation.");
                     return;
@@ -298,7 +297,7 @@ namespace project.Forms.UserCotrols
             }
 
             // Team Required
-            if (selectedEvent.TeamRequired != "None")
+            if (selectedEvent.TeamRequired !="None")
             {
                 var selectedTeam = (Team)comboBox1.SelectedItem;
 
@@ -312,7 +311,7 @@ namespace project.Forms.UserCotrols
                 var leader = teamMembers.FirstOrDefault(m => m.Role.ToLower() == "leader");
 
                 // Not leader
-                if (leader == null || leader.MemberAridNo != currentStudent.AridNo)
+                if (leader == null || leader.AridNo != currentStudent.AridNo)
                 {
                     ShowTeamDetailsInGroupBox(selectedTeam, teamMembers);
                     MessageBox.Show("Only the team leader can submit participation.");
@@ -345,7 +344,7 @@ namespace project.Forms.UserCotrols
 
             foreach (var member in members)
             {
-                var student = StudentViewModel.GetByAridNo(member.MemberAridNo);
+                var student = StudentViewModel.GetByAridNo(member.AridNo);
                 if (student == null) continue;
 
                 Label lbl = new Label

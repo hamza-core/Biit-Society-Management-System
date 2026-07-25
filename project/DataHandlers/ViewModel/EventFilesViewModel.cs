@@ -36,9 +36,9 @@ namespace project.DataHandlers.ViewModel
             };
 
             List<EventFile> eventFiles = new List<EventFile>();
-            DataTable dataTable = DatabaseHelper.ExecuteSelect(query, parameters)
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters)
             ;
-                foreach(DataRow row in dataTable.Rows)
+                foreach(DataRow row in dt)
                 {
                     EventFile eventFile = new EventFile
                     {
@@ -62,10 +62,10 @@ namespace project.DataHandlers.ViewModel
                 {"@fileName",name },
             };
 
-           DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+           List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             if (dt != null)
             {
-                DataRow row = dt.Rows[0];
+                DataRow row = dt[0];
 
                 return new EventFile
                 {

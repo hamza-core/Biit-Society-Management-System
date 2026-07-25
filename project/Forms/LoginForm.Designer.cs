@@ -39,7 +39,6 @@
             this.chkShowPass = new System.Windows.Forms.CheckBox();
             this.lblErrorPassword = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -161,8 +160,6 @@
             // 
             // guna2Elipse1
             // 
-            this.guna2Elipse1.BorderRadius = 15;
-            this.guna2Elipse1.TargetControl = this;
             // 
             // button2
             // 
@@ -259,7 +256,6 @@
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.Label lblErrorPassword;
         private System.Windows.Forms.Button btnLogin;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnSignUp;

@@ -122,7 +122,7 @@ namespace project.Theme.Controls
                     var lineRect = new Rectangle(
                         ThemeManager.PaddingMedium, 
                         Height - 3, 
-                        (int)(Width - ThemeManager.PaddingMedium * 2) * (_animationFrame / 10.0f), 
+                        (int)((Width - ThemeManager.PaddingMedium * 2) * (_animationFrame / 10.0f)), 
                         2);
                     g.FillRectangle(brush, lineRect);
                 }

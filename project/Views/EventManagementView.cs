@@ -86,7 +86,7 @@ namespace project.Views
                 Text = "← Back to Events",
                 Location = new Point(30, 70),
                 Size = new Size(180, 40),
-                BackgroundColor = Color.FromArgb(149, 165, 166),
+                BackColor = Color.FromArgb(149, 165, 166),
                 HoverColor = Color.FromArgb(127, 140, 141),
                 Font = new Font("Segoe UI", 11, FontStyle.Bold),
                 Visible = false
@@ -126,7 +126,7 @@ namespace project.Views
             {
                 Size = new Size(820, 100),
                 Margin = new Padding(0, 0, 0, 15),
-                ShadowIntensity = 0.1f
+                ShadowIntensity = (int)0.1f
             };
 
             // Event Icon
@@ -178,7 +178,7 @@ namespace project.Views
                 Text = "⚙ Manage",
                 Location = new Point(650, 30),
                 Size = new Size(140, 40),
-                BackgroundColor = Color.FromArgb(52, 152, 219),
+                BackColor = Color.FromArgb(52, 152, 219),
                 HoverColor = Color.FromArgb(41, 128, 185),
                 Font = new Font("Segoe UI", 11, FontStyle.Bold)
             };

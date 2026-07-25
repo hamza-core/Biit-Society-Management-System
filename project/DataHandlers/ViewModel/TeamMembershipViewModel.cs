@@ -17,7 +17,7 @@ namespace project.DataHandlers
                 { "@AridNo", membership.AridNo }
             };
             var existing = DatabaseHelper.ExecuteSelect(checkQuery, checkParams);
-            if (existing.Rows.Count > 0) return false;
+            if (existing.Count > 0) return false;
 
             string query = @"INSERT INTO TeamMembership (TeamID, AridNo, Role,  IsDeleted)
                              VALUES (@TeamID, @AridNo, @Role, 0)";
@@ -36,10 +36,10 @@ namespace project.DataHandlers
             string query = "SELECT * FROM TeamMembership WHERE TeamID = @TeamID AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@TeamID", teamId } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             var members = new List<TeamMembership>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new TeamMembership
                 {
@@ -66,10 +66,10 @@ namespace project.DataHandlers
             string query = "SELECT * FROM TeamMembership WHERE Role = @Role AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@Role", role } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             var members = new List<TeamMembership>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new TeamMembership
                 {

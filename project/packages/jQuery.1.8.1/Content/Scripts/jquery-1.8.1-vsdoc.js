@@ -1,6 +1,6 @@
 ﻿/*
 * This file has been generated to support Visual Studio IntelliSense.
-* You should not use this file at runtime inside the browser--it is only
+* You should not use this file at runtime inside the er--it is only
 * intended to be used only for design-time IntelliSense.  Please use the
 * standard jQuery library for all production use.
 *
@@ -1083,7 +1083,7 @@
         "type": {},
         "value": {}
     };
-    jQuery.browser = {
+    jQuery.er = {
         "chrome": true,
         "version": '21.0.1180.83',
         "webkit": true
@@ -1165,7 +1165,7 @@
                     div = context.createElement("div");
                     safe.appendChild(div);
 
-                    // Fix "XHTML"-style tags in all browsers
+                    // Fix "XHTML"-style tags in all ers
                     elem = elem.replace(rxhtmlTag, "<$1></$2>");
 
                     // Go to html and back, then peel off extra wrappers
@@ -1680,7 +1680,7 @@
     jQuery.easing = {};
     jQuery.error = function (msg) {
         /// <summary>
-        ///     Takes a string and throws an exception containing it.
+        ///     Takes a string and t an exception containing it.
         /// </summary>
         /// <param name="msg" type="String">
         ///     The message to send out.
@@ -2499,7 +2499,7 @@
         "maxlength": 'maxLength',
         "cellspacing": 'cellSpacing',
         "cellpadding": 'cellPadding',
-        "rowspan": 'rowSpan',
+        pan": pan',
         "colspan": 'colSpan',
         "usemap": 'useMap',
         "frameborder": 'frameBorder',
@@ -2529,7 +2529,7 @@
         }
 
         // Quick check to determine if target is callable, in the spec
-        // this throws a TypeError, but we will just return undefined.
+        // this t a TypeError, but we will just return undefined.
         if (!jQuery.isFunction(fn)) {
             return undefined;
         }
@@ -2991,7 +2991,7 @@
             [];
 
         return {
-            browser: match[1] || "",
+            er: match[1] || "",
             version: match[2] || "0"
         };
     };
@@ -3982,7 +3982,7 @@
                                 dataType: "script",
                                 async: false,
                                 global: false,
-                                "throws": true
+                                "t": true
                             });
                         } else {
                             jQuery.error("no ajax");
@@ -4558,7 +4558,7 @@
 
                     elem = 0;
 
-                    // If using innerHTML throws an exception, use the fallback method
+                    // If using innerHTML t an exception, use the fallback method
                 } catch (e) { }
             }
 

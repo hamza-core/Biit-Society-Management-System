@@ -30,11 +30,11 @@ namespace project.DataHandlers
         public List<BudgetRequest> GetAllRequests()
         {
             string query = "SELECT * FROM BudgetRequests WHERE IsDeleted = 0";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, null);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, null);
 
             List<BudgetRequest> requests = new List<BudgetRequest>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 requests.Add(new BudgetRequest
                 {
@@ -54,11 +54,11 @@ namespace project.DataHandlers
         public List<BudgetRequest> GetPendingRequests()
         {
             string query = "SELECT * FROM BudgetRequests WHERE status= Pending AND  IsDeleted = 0";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, null);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, null);
 
             List<BudgetRequest> requests = new List<BudgetRequest>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 requests.Add(new BudgetRequest
                 {
@@ -111,10 +111,10 @@ namespace project.DataHandlers
             string query = "SELECT * FROM BudgetRequests WHERE EventID = @EventID AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@EventID", eventId } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<BudgetRequest> requests = new List<BudgetRequest>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 requests.Add(new BudgetRequest
                 {

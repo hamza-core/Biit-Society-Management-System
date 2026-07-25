@@ -68,7 +68,7 @@ namespace project.Views
             {
                 Location = new Point(30, 90),
                 Size = new Size(700, 280),
-                ShadowIntensity = 0.15f
+                //ShadowIntensity = 0.15f
             };
 
             var lblScannerTitle = new Label
@@ -95,7 +95,7 @@ namespace project.Views
                 Text = "✓ Mark Attendance",
                 Location = new Point(25, 125),
                 Size = new Size(200, 45),
-                BackgroundColor = Color.FromArgb(46, 204, 113),
+                BackColor = Color.FromArgb(46, 204, 113),
                 HoverColor = Color.FromArgb(39, 174, 96),
                 Font = new Font("Segoe UI", 12, FontStyle.Bold)
             };
@@ -107,7 +107,7 @@ namespace project.Views
                 Text = "🖨 Print Card",
                 Location = new Point(240, 125),
                 Size = new Size(180, 45),
-                BackgroundColor = Color.FromArgb(52, 152, 219),
+                BackColor = Color.FromArgb(52, 152, 219),
                 HoverColor = Color.FromArgb(41, 128, 185),
                 Font = new Font("Segoe UI", 12, FontStyle.Bold)
             };
@@ -141,7 +141,7 @@ namespace project.Views
             {
                 Location = new Point(30, 390),
                 Size = new Size(700, 200),
-                ShadowIntensity = 0.15f
+                //ShadowIntensity = 0.15f
             };
 
             var lblResultsTitle = new Label

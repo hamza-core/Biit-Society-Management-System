@@ -46,10 +46,10 @@ namespace project.DataHandlers
         public List<Teacher> GetAllTeachers()
         {
             string query = "SELECT * FROM Teacher WHERE IsDeleted = 0";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, null);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, null);
 
             List<Teacher> teachers = new List<Teacher>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 teachers.Add(new Teacher
                 {
@@ -76,10 +76,10 @@ namespace project.DataHandlers
             {
                 { "@name" ,name },
             };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<Teacher> teachers = new List<Teacher>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 teachers.Add(new Teacher
                 {
@@ -157,10 +157,10 @@ namespace project.DataHandlers
                 { "@Department", department }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<Teacher> teachers = new List<Teacher>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 teachers.Add(new Teacher
                 {
@@ -192,10 +192,10 @@ namespace project.DataHandlers
         public static List<Teacher> GetFinancePanelMembers()
         {
             string query = "SELECT * FROM Teacher WHERE IsFinancePanelMember = 1 AND IsDeleted = 0";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query);
 
             List<Teacher> members = new List<Teacher>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new Teacher
                 {

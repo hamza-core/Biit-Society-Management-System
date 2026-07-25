@@ -67,7 +67,7 @@ namespace project.Theme.Controls
             
             minimizeButton.MouseEnter += (s, e) => minimizeButton.BackColor = Theme.ThemeManager.HoverColor;
             minimizeButton.MouseLeave += (s, e) => minimizeButton.BackColor = BarColor;
-            minimizeButton.Click += (s, e) => parentForm?.WindowState = FormWindowState.Minimized;
+            minimizeButton.Click += (s, e) => parentForm.WindowState = FormWindowState.Minimized;
             
             Controls.Add(minimizeButton);
             

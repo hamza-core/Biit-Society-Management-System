@@ -12,7 +12,6 @@ namespace project.DataHandlers
 
     public class StudentViewModel
     {
-        private DatabaseHelper db = new DatabaseHelper();
 
         public static bool AddStudent(Student student)
         {
@@ -112,10 +111,10 @@ namespace project.DataHandlers
         public static List<Student> GetAllStudents()
         {
             string query = "SELECT * FROM Student where isDeleted = 0";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, null);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, null);
 
             List<Student> students = new List<Student>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 students.Add(new Student
                 {
@@ -127,7 +126,7 @@ namespace project.DataHandlers
                     Phone = row["PhoneNo"].ToString(),
                     Password = row["Password"].ToString(),
                     Department = row["Department"].ToString(),
-                    IsDeleted = row["isDeleted"].ToString(),
+                    IsDeleted = bool.Parse( row["isDeleted"].ToString()),
 
                 });
             }
@@ -152,7 +151,7 @@ namespace project.DataHandlers
                 Email = row["Email"].ToString(),
                 Phone = row["PhoneNo"].ToString(),
                 Department = row["Department"].ToString(),
-                IsDeleted = row["isDeleted"].ToString(),
+                IsDeleted = bool.Parse(row["isDeleted"].ToString()),
                 Password = row["Password"].ToString()
             };
         }
@@ -174,7 +173,7 @@ namespace project.DataHandlers
                 Email = row["Email"].ToString(),
                 Phone = row["PhoneNo"].ToString(),
                 Department = row["Department"].ToString(),
-                IsDeleted = row["isDeleted"].ToString(),
+                IsDeleted = bool.Parse(row["isDeleted"].ToString()),
                 Password = row["Password"].ToString()
             };
         }
@@ -185,10 +184,10 @@ namespace project.DataHandlers
             Dictionary<String, object> parameters = new Dictionary<string, object>{
                 { "@name", name}
             };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<Student> students = new List<Student>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 students.Add(new Student
                 {
@@ -200,7 +199,7 @@ namespace project.DataHandlers
                     Phone = row["PhoneNo"].ToString(),
                     Password = row["Password"].ToString(),
                     Department = row["Department"].ToString(),
-                    IsDeleted = row["isDeleted"].ToString(),
+                    IsDeleted = bool.Parse(row["isDeleted"].ToString()),
 
                 });
             }
@@ -214,10 +213,10 @@ namespace project.DataHandlers
             Dictionary<String, object> parameters = new Dictionary<string, object>{
                 { "@Department", department}
             };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<Student> students = new List<Student>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 students.Add(new Student
                 {
@@ -229,7 +228,7 @@ namespace project.DataHandlers
                     Phone = row["PhoneNo"].ToString(),
                     Password = row["Password"].ToString(),
                     Department = row["Department"].ToString(),
-                    IsDeleted = row["isDeleted"].ToString(),
+                    IsDeleted = bool.Parse(row["isDeleted"].ToString()),
 
                 });
             }

@@ -41,11 +41,11 @@ VALUES
             string query = "SELECT COUNT(*) FROM EventParticipation WHERE EventID = @EventID AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@EventID", eventId } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
-            if (dt.Rows.Count > 0)
+            if (dt.Count > 0)
             {
-                return Convert.ToInt32(dt.Rows[0][0]);
+                return Convert.ToInt32(dt[0][0]);
             }
 
             return 0;
@@ -58,10 +58,10 @@ VALUES
             string query = "SELECT * FROM EventParticipation WHERE EventID = @EventID AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@EventID", eventId } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<EventParticipation> list = new List<EventParticipation>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 list.Add(new EventParticipation
                 {
@@ -84,10 +84,10 @@ VALUES
             string query = "SELECT * FROM EventParticipation WHERE AridNo = @AridNo And Role = @part AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@AridNo", aridNo } ,{"@part", "Participant"} };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<EventParticipation> list = new List<EventParticipation>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 list.Add(new EventParticipation
                 {

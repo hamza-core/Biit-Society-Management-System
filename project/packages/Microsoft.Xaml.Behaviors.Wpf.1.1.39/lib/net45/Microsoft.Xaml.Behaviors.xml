@@ -689,7 +689,7 @@
         <member name="T:Microsoft.Xaml.Behaviors.Core.LaunchUriOrFileAction">
             <summary>
             An action that will launch a process to open a file or Uri. For files, this action will launch the default program 
-            for the given file extension. A Uri will open in a web browser.
+            for the given file extension. A Uri will open in a web er.
             </summary>
         </member>
         <member name="P:Microsoft.Xaml.Behaviors.Core.LaunchUriOrFileAction.Path">

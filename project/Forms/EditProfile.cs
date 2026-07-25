@@ -1,5 +1,6 @@
 ﻿using project.DataHandlers;
 using project.DataHandlers.Auth;
+using project.Models;
 using project.Utilities;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace project.Forms
                     AridNo = txtAridNo.Text,
                     Phone = "+92" + txtPhoneNo.Text,
                     Email = txtEmail.Text,
-                    IsDeleted = "0"
+                    IsDeleted = false
 
                 });
                 if (!x.isValid)

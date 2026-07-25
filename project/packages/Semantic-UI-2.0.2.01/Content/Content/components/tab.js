@@ -840,7 +840,7 @@ $.fn.tab.settings = {
   performance     : true,
 
   auto            : false,  // uses pjax style endpoints fetching content from same url with remote-content headers
-  history         : false,  // use browser history
+  history         : false,  // use er history
   historyType     : 'hash', // #/ or html5 state
   path            : false,  // base path of url
 

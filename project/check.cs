@@ -26,22 +26,22 @@ namespace project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Teacher
-                  t = new Teacher
-                  {
-                      TeacherID = "123",
-                      Name = "Name",
-                      IsFinancePanelMember = true,
-                      IsMentor = true,
-                      Password = "Password",
-                      PhoneNo = "1234567890",
-                      Department = "dep",
-                      Email = "sss"
-                      ,
-                      IsDeleted = true,
+            //Teacher
+            //      t = new Teacher
+            //      {
+            //          TeacherID = "123",
+            //          Name = "Name",
+            //          IsFinancePanelMember = true,
+            //          IsMentor = true,
+            //          Password = "Password",
+            //          PhoneNo = "1234567890",
+            //          Department = "dep",
+            //          Email = "sss"
+            //          ,
+            //          IsDeleted = true,
 
-                  };
-            TeacherData.AddTeacher(t);
+            //      };
+            //TeacherData.AddTeacher(t);
         }
     }
 }

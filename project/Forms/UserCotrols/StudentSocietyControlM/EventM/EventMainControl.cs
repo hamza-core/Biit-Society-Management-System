@@ -302,7 +302,7 @@ namespace project.Forms.UserCotrols.StudentSocietyControlM.EventM
                   {
                       Role = comboBox4.SelectedItem.ToString(),
                       TeamID = st.TeamID,
-                      MemberID = sm.MemberID.ToString(),
+                      MemberID = sm.MemberID,
                       JoiningDate = dateTimePicker1.Value,
 
                   });
@@ -337,7 +337,7 @@ namespace project.Forms.UserCotrols.StudentSocietyControlM.EventM
 
             foreach (var member in members)
             {
-                SocietyMember sm = SocietyMemberViewModel.GetByMemberId(int.Parse(member.MemberID))[0];
+                SocietyMember sm = SocietyMemberViewModel.GetByMemberId(int.Parse(member.MemberID.ToString()))[0];
                 Student s = StudentViewModel.GetByAridNo(sm.AridNo);
 
                 Label l = new Label
@@ -524,8 +524,8 @@ namespace project.Forms.UserCotrols.StudentSocietyControlM.EventM
             if (dataGridView2.Columns[e.ColumnIndex].Name == "btnUpload")
             {
                 // Step 1: Get EventID from selected row
-                int eventId = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells["EventID"].Value);
-
+                int eventId = Convert.ToInt32(dataGridView2.Rows[e.RowIndex]. Cells["EventID"].Value);
+                //int eventID = 0;
                 // Step 2: Open file dialog
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "All Files|*.*";

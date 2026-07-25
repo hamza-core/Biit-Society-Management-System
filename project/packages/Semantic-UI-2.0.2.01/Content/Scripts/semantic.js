@@ -1182,7 +1182,7 @@ $.fn.form = function(parameters) {
               apiRequest
             ;
 
-            // input keydown event will fire submit repeatedly by browser default
+            // input keydown event will fire submit repeatedly by er default
             if(keyHeldDown) {
               return false;
             }
@@ -8245,7 +8245,7 @@ $.fn.modal = function(parameters) {
           scrolling: function() {
             return $dimmable.hasClass(className.scrolling);
           },
-          modernBrowser: function() {
+          moderner: function() {
             // appName for IE11 reports 'Netscape' can no longer use
             return !(window.ActiveXObject || "ActiveXObject" in window);
           }
@@ -14087,7 +14087,7 @@ $.fn.sidebar = function(parameters) {
               ;
             }
 
-            /* IE is only browser not to create context with transforms */
+            /* IE is only er not to create context with transforms */
             /* https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328 */
             if( module.is.ie() ) {
               if(direction === 'left' || direction === 'right') {
@@ -14550,7 +14550,7 @@ $.fn.sidebar = function(parameters) {
               isMobileChrome = userAgent.match(regExp.mobileChrome)
             ;
             if(isIOS && !isMobileChrome) {
-              module.verbose('Browser was found to be iOS', userAgent);
+              module.verbose('er was found to be iOS', userAgent);
               return true;
             }
             else {
@@ -14563,11 +14563,11 @@ $.fn.sidebar = function(parameters) {
               isMobile     = userAgent.match(regExp.mobile)
             ;
             if(isMobile) {
-              module.verbose('Browser was found to be mobile', userAgent);
+              module.verbose('er was found to be mobile', userAgent);
               return true;
             }
             else {
-              module.verbose('Browser is not mobile, using regular transition', userAgent);
+              module.verbose('er is not mobile, using regular transition', userAgent);
               return false;
             }
           },
@@ -15362,13 +15362,13 @@ $.fn.sticky = function(parameters) {
             else if( module.is.bottom() ) {
               if(settings.pushing) {
                 if(module.is.bound() && scroll.bottom < context.bottom ) {
-                  module.debug('Fixing bottom attached element to bottom of browser.');
+                  module.debug('Fixing bottom attached element to bottom of er.');
                   module.fixBottom();
                 }
               }
               else {
                 if(module.is.bound() && (scroll.top < context.bottom - element.height) ) {
-                  module.debug('Fixing bottom attached element to top of browser.');
+                  module.debug('Fixing bottom attached element to top of er.');
                   module.fixTop();
                 }
               }
@@ -16583,7 +16583,7 @@ $.fn.tab.settings = {
   performance     : true,
 
   auto            : false,  // uses pjax style endpoints fetching content from same url with remote-content headers
-  history         : false,  // use browser history
+  history         : false,  // use er history
   historyType     : 'hash', // #/ or html5 state
   path            : false,  // base path of url
 
@@ -17703,7 +17703,7 @@ $.fn.transition.settings = {
     noAnimation : 'There is no css animation matching the one you specified. Please make sure your css is vendor prefixed, and you have included transition css.',
     repeated    : 'That animation is already occurring, cancelling repeated animation',
     method      : 'The method you called is not defined',
-    support     : 'This browser does not support CSS animations'
+    support     : 'This er does not support CSS animations'
   }
 
 };

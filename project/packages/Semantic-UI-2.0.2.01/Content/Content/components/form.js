@@ -685,7 +685,7 @@ $.fn.form = function(parameters) {
               apiRequest
             ;
 
-            // input keydown event will fire submit repeatedly by browser default
+            // input keydown event will fire submit repeatedly by er default
             if(keyHeldDown) {
               return false;
             }

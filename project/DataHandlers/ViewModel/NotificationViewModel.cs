@@ -35,10 +35,10 @@ namespace project.DataHandlers.ViewModel
         {
             // 1. Get all students
             string getStudentsQuery = "SELECT AridNo FROM Student";
-            DataTable studentsTable = DatabaseHelper.ExecuteSelect(getStudentsQuery);
+            List<DataRow> studentsTable = DatabaseHelper.ExecuteSelect(getStudentsQuery ,null);
 
             // 2. Loop through students and insert notification for each
-            foreach (DataRow row in studentsTable.Rows)
+            foreach (DataRow row in studentsTable)
             {
                 string studentAridNo = row["AridNo"].ToString();
 
@@ -69,10 +69,10 @@ namespace project.DataHandlers.ViewModel
                 {"@RecipientAridNo", aridNo}
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<Notification> notifications = new List<Notification>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 notifications.Add(new Notification
                 {
@@ -95,10 +95,10 @@ namespace project.DataHandlers.ViewModel
         public static List<Notification> GetAllUnreadNotification() {
 
             string query = "SELECT * FROM Notifications WHERE IsRead = 0 AND isDeleted = 0";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, null);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, null);
             List<Notification> notifications = new List<Notification>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 notifications.Add(new Notification
                 {
@@ -145,10 +145,10 @@ namespace project.DataHandlers.ViewModel
                 {"@SocietyID", societyId}
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<Notification> notifications = new List<Notification>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 notifications.Add(new Notification
                 {
@@ -175,10 +175,10 @@ namespace project.DataHandlers.ViewModel
                 {"@EventId", eventId}
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<Notification> notifications = new List<Notification>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 notifications.Add(new Notification
                 {
@@ -230,10 +230,10 @@ namespace project.DataHandlers.ViewModel
                 {"@RecipientAridNo", aridNo}
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<Notification> notifications = new List<Notification>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 notifications.Add(new Notification
                 {

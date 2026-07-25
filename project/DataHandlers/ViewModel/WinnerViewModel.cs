@@ -7,7 +7,6 @@ namespace project.DataHandlers
 {
     public class WinnerViewModel
     {
-        private readonly DatabaseHelper db = new DatabaseHelper();
 
         public bool AddWinner(Winner winner)
         {
@@ -29,10 +28,10 @@ namespace project.DataHandlers
             string query = "SELECT * FROM Winners WHERE EventID = @EventID AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@EventID", eventId } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             var winners = new List<Winner>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 winners.Add(new Winner
                 {

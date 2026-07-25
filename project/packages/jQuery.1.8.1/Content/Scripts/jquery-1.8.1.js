@@ -526,7 +526,7 @@ jQuery.extend({
 		jQuery.error( "Invalid JSON: " + data );
 	},
 
-	// Cross-browser xml parsing
+	// Cross-er xml parsing
 	parseXML: function( data ) {
 		var xml, tmp;
 		if ( !data || typeof data !== "string" ) {
@@ -764,7 +764,7 @@ jQuery.extend({
 		}
 
 		// Quick check to determine if target is callable, in the spec
-		// this throws a TypeError, but we will just return undefined.
+		// this t a TypeError, but we will just return undefined.
 		if ( !jQuery.isFunction( fn ) ) {
 			return undefined;
 		}
@@ -844,14 +844,14 @@ jQuery.ready.promise = function( obj ) {
 
 		readyList = jQuery.Deferred();
 
-		// Catch cases where $(document).ready() is called after the browser event has already occurred.
+		// Catch cases where $(document).ready() is called after the er event has already occurred.
 		// we once tried to use readyState "interactive" here, but it caused issues like the one
 		// discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
 		if ( document.readyState === "complete" ) {
 			// Handle it asynchronously to allow scripts the opportunity to delay ready
 			setTimeout( jQuery.ready, 1 );
 
-		// Standards-based browsers support DOMContentLoaded
+		// Standards-based ers support DOMContentLoaded
 		} else if ( document.addEventListener ) {
 			// Use the handy event callback
 			document.addEventListener( "DOMContentLoaded", DOMContentLoaded, false );
@@ -1389,7 +1389,7 @@ jQuery.support = (function() {
 	fragment.appendChild( div );
 
 	// Technique from Juriy Zaytsev
-	// http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
+	// http://perfectionkills.com/detecting-event-support-without-er-sniffing/
 	// We only care about the case where non-standard event systems
 	// are used, namely in IE. Short-circuiting here helps us to
 	// avoid an eval call (in setAttribute) which can cause CSP
@@ -2411,7 +2411,7 @@ jQuery.extend({
 		maxlength: "maxLength",
 		cellspacing: "cellSpacing",
 		cellpadding: "cellPadding",
-		rowspan: "rowSpan",
+	pan: pan",
 		colspan: "colSpan",
 		usemap: "useMap",
 		frameborder: "frameBorder",
@@ -2545,7 +2545,7 @@ if ( !getSetAttribute ) {
 	});
 
 	// Set contenteditable to false on removals(#10429)
-	// Setting to empty string throws an error as an invalid value
+	// Setting to empty string t an error as an invalid value
 	jQuery.attrHooks.contenteditable = {
 		get: nodeHook.get,
 		set: function( elem, value, name ) {
@@ -3340,7 +3340,7 @@ jQuery.each({
 				selector = handleObj.selector;
 
 			// For mousenter/leave call the handler if related is outside the target.
-			// NB: No relatedTarget if the mouse left/entered the browser window
+			// NB: No relatedTarget if the mouse left/entered the er window
 			if ( !related || (related !== target && !jQuery.contains( target, related )) ) {
 				event.type = handleObj.origType;
 				ret = handleObj.handler.apply( this, arguments );
@@ -3837,9 +3837,9 @@ var dirruns,
 
 		// Test
 		var pass = document.getElementsByName &&
-			// buggy browsers will return fewer than the correct 2
+			// buggy ers will return fewer than the correct 2
 			document.getElementsByName( expando ).length === 2 +
-			// buggy browsers will return more than the correct 0
+			// buggy ers will return more than the correct 0
 			document.getElementsByName( expando + 0 ).length;
 		assertGetIdNotName = !document.getElementById( expando );
 
@@ -4876,7 +4876,7 @@ function handlePOS( groups, context, results, seed ) {
 		// This is generated here in case matchExpr["POS"] is extended
 		rposgroups = new RegExp( "^" + rpos.source + "(?!" + whitespace + ")", "i" ),
 		// This is for making sure non-participating
-		// matching groups are represented cross-browser (IE6-8)
+		// matching groups are represented cross-er (IE6-8)
 		setUndefined = function() {
 			var i = 1,
 				len = arguments.length - 2;
@@ -5065,7 +5065,7 @@ if ( document.querySelectorAll ) {
 
 			// Webkit/Opera - :checked should return selected option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
-			// IE8 throws error here (do not put tests after this one)
+			// IE8 t error here (do not put tests after this one)
 			if ( !div.querySelectorAll(":checked").length ) {
 				rbuggyQSA.push(":checked");
 			}
@@ -5081,7 +5081,7 @@ if ( document.querySelectorAll ) {
 			}
 
 			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
-			// IE8 throws error here (do not put tests after this one)
+			// IE8 t error here (do not put tests after this one)
 			div.innerHTML = "<input type='hidden'/>";
 			if ( !div.querySelectorAll(":enabled").length ) {
 				rbuggyQSA.push(":enabled", ":disabled");
@@ -5745,7 +5745,7 @@ jQuery.fn.extend({
 
 					elem = 0;
 
-				// If using innerHTML throws an exception, use the fallback method
+				// If using innerHTML t an exception, use the fallback method
 				} catch(e) {}
 			}
 
@@ -5859,7 +5859,7 @@ jQuery.fn.extend({
 								dataType: "script",
 								async: false,
 								global: false,
-								"throws": true
+								"t": true
 							});
 						} else {
 							jQuery.error("no ajax");
@@ -5935,7 +5935,7 @@ function cloneFixAttributes( src, dest ) {
 
 	if ( nodeName === "object" ) {
 		// IE6-10 improperly clones children of object elements using classid.
-		// IE10 throws NoModificationAllowedError if parent is null, #12132.
+		// IE10 t NoModificationAllowedError if parent is null, #12132.
 		if ( dest.parentNode ) {
 			dest.outerHTML = src.outerHTML;
 		}
@@ -6164,7 +6164,7 @@ jQuery.extend({
 					div = context.createElement("div");
 					safe.appendChild( div );
 
-					// Fix "XHTML"-style tags in all browsers
+					// Fix "XHTML"-style tags in all ers
 					elem = elem.replace(rxhtmlTag, "<$1></$2>");
 
 					// Go to html and back, then peel off extra wrappers
@@ -6324,10 +6324,10 @@ jQuery.extend({
 // Limit scope pollution from any deprecated API
 (function() {
 
-var matched, browser;
+var matched, er;
 
-// Use of jQuery.browser is frowned upon.
-// More details: http://api.jquery.com/jQuery.browser
+// Use of jQuery.er is frowned upon.
+// More details: http://api.jquery.com/jQuery.er
 // jQuery.uaMatch maintained for back-compat
 jQuery.uaMatch = function( ua ) {
 	ua = ua.toLowerCase();
@@ -6340,27 +6340,27 @@ jQuery.uaMatch = function( ua ) {
 		[];
 
 	return {
-		browser: match[ 1 ] || "",
+		er: match[ 1 ] || "",
 		version: match[ 2 ] || "0"
 	};
 };
 
 matched = jQuery.uaMatch( navigator.userAgent );
-browser = {};
+er = {};
 
-if ( matched.browser ) {
-	browser[ matched.browser ] = true;
-	browser.version = matched.version;
+if ( matched.er ) {
+	er[ matched.er ] = true;
+	er.version = matched.version;
 }
 
 // Chrome is Webkit, but Webkit is also Safari.
-if ( browser.chrome ) {
-	browser.webkit = true;
-} else if ( browser.webkit ) {
-	browser.safari = true;
+if ( er.chrome ) {
+	er.webkit = true;
+} else if ( er.webkit ) {
+	er.safari = true;
 }
 
-jQuery.browser = browser;
+jQuery.er = er;
 
 jQuery.sub = function() {
 	function jQuerySub( selector, context ) {
@@ -6456,7 +6456,7 @@ function showHide( elements, show ) {
 			}
 
 			// Set elements which have been overridden with display: none
-			// in a stylesheet to whatever the default browser style is
+			// in a stylesheet to whatever the default er style is
 			// for such an element
 			if ( elem.style.display === "" && isHidden( elem ) ) {
 				values[ index ] = jQuery._data( elem, "olddisplay", css_defaultDisplay(elem.nodeName) );
@@ -6815,7 +6815,7 @@ function getWidthOrHeight( elem, name, extra ) {
 			return val;
 		}
 
-		// we need the check for style in case a browser which returns unreliable values
+		// we need the check for style in case a er which returns unreliable values
 		// for getComputedStyle silently falls back to the reliable elem.style
 		valueIsBorderBox = isBorderBox && ( jQuery.support.boxSizingReliable || val === elem.style[ name ] );
 
@@ -7405,7 +7405,7 @@ jQuery.extend({
 		username: null,
 		password: null,
 		cache: null,
-		throws: false,
+		t: false,
 		traditional: false,
 		headers: {},
 		*/
@@ -7986,7 +7986,7 @@ function ajaxConvert( s, response ) {
 				if ( conv !== true ) {
 
 					// Unless errors are allowed to bubble, catch and return them
-					if ( conv && s["throws"] ) {
+					if ( conv && s["t"] ) {
 						response = conv( response );
 					} else {
 						try {
@@ -8142,7 +8142,7 @@ jQuery.ajaxTransport( "script", function(s) {
 
 				script.src = s.url;
 
-				// Attach handlers for all browsers
+				// Attach handlers for all ers
 				script.onload = script.onreadystatechange = function( _, isAbort ) {
 
 					if ( isAbort || !script.readyState || /loaded|complete/.test( script.readyState ) ) {
@@ -8212,7 +8212,7 @@ jQuery.ajaxSettings.xhr = window.ActiveXObject ?
 	function() {
 		return !this.isLocal && createStandardXHR() || createActiveXHR();
 	} :
-	// For all other browsers, use the standard XMLHttpRequest object
+	// For all other ers, use the standard XMLHttpRequest object
 	createStandardXHR;
 
 // Determine support properties
@@ -8223,7 +8223,7 @@ jQuery.ajaxSettings.xhr = window.ActiveXObject ?
 	});
 })( jQuery.ajaxSettings.xhr() );
 
-// Create transport if the browser can provide an xhr
+// Create transport if the er can provide an xhr
 if ( jQuery.support.ajax ) {
 
 	jQuery.ajaxTransport(function( s ) {
@@ -8289,7 +8289,7 @@ if ( jQuery.support.ajax ) {
 							responses,
 							xml;
 
-						// Firefox throws exceptions when accessing properties
+						// Firefox t exceptions when accessing properties
 						// of an xhr when a network error occurred
 						// http://helpful.knobs-dials.com/index.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
 						try {
@@ -8332,7 +8332,7 @@ if ( jQuery.support.ajax ) {
 									} catch( _ ) {
 									}
 
-									// Firefox throws an exception when accessing
+									// Firefox t an exception when accessing
 									// statusText for faulty cross-domain requests
 									try {
 										statusText = xhr.statusText;

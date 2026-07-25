@@ -1,5 +1,6 @@
 ﻿using project.DataHandlers;
 using project.DataHandlers.Auth;
+using project.Models;
 using project.Utilities;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace project.Forms
@@ -88,7 +88,7 @@ namespace project.Forms
                     Department = cmbDepartment.SelectedItem.ToString(),
                     Phone = "+92" + txtPhoneNo.Text,
                     Email = txtEmail.Text,
-                    IsDeleted = "0"
+                    IsDeleted = false
 
                 });
                 if(!x.isValid){

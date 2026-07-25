@@ -106,7 +106,7 @@ video {
 /* 2 */
 }
 /**
- * Prevent modern browsers from displaying `audio` without controls.
+ * Prevent modern ers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
 audio:not([controls]) {
@@ -131,7 +131,7 @@ a {
   background: transparent;
 }
 /**
- * Improve readability when focused and also mouse hovered in all browsers.
+ * Improve readability when focused and also mouse hovered in all ers.
  */
 a:active,
 a:hover {
@@ -175,13 +175,13 @@ mark {
   color: #000;
 }
 /**
- * Address inconsistent and variable font size in all browsers.
+ * Address inconsistent and variable font size in all ers.
  */
 small {
   font-size: 80%;
 }
 /**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ * Prevent `sub` and `sup` affecting `line-height` in all ers.
  */
 sub,
 sup {
@@ -221,20 +221,20 @@ figure {
   margin: 1em 40px;
 }
 /**
- * Address differences between Firefox and other browsers.
+ * Address differences between Firefox and other ers.
  */
 hr {
   box-sizing: content-box;
   height: 0;
 }
 /**
- * Contain overflow in all browsers.
+ * Contain overflow in all ers.
  */
 pre {
   overflow: auto;
 }
 /**
- * Address odd `em`-unit font size rendering in all browsers.
+ * Address odd `em`-unit font size rendering in all ers.
  */
 code,
 kbd,

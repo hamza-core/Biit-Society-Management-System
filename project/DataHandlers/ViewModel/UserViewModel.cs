@@ -77,10 +77,10 @@ namespace project.DataHandlers
                 { "@Role", role }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<User> users = new List<User>();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 users.Add(new User
                 {

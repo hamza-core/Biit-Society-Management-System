@@ -51,7 +51,7 @@ namespace project.Theme
         
         // Font Sizes
         public static readonly float FontSizeSmall = 10F;
-        public static readonly float FontSizeMedium = 12F;
+        public const   float FontSizeMedium = 12F;
         public static readonly float FontSizeLarge = 16F;
         public static readonly float FontSizeXLarge = 20F;
         public static readonly float FontSizeTitle = 28F;

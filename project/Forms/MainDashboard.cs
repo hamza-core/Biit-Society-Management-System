@@ -182,12 +182,12 @@ namespace project.Forms
             {
                 Size = new Size(1000, 180),
                 Location = new Point(30, 30),
-                ShadowIntensity = 0.15f
+                //ShadowIntensity = 0.15f
             };
             
             using (var g = welcomeCard.CreateGraphics())
             {
-                using (var gradient = new Drawing2D.LinearGradientBrush(
+                using (var gradient = new System.Drawing.Drawing2D.LinearGradientBrush(
                     new Point(0, 0),
                     new Point(welcomeCard.Width, welcomeCard.Height),
                     Color.FromArgb(52, 152, 219),
@@ -200,7 +200,7 @@ namespace project.Forms
             var lblWelcome = new Label
             {
                 Text = $"Welcome back, {currentStudent?.Name ?? "Student"}!",
-                Font = Theme.ThemeManager.GetFontBold(Theme.ThemeManager.FontSizeXXLarge),
+                Font = Theme.ThemeManager.GetFontBold(Theme.ThemeManager.FontSizeXLarge),
                 ForeColor = Color.White,
                 AutoSize = true,
                 Location = new Point(40, 30)
@@ -231,7 +231,7 @@ namespace project.Forms
             {
                 Size = new Size(160, 100),
                 Location = new Point(x, y),
-                ShadowIntensity = 0.1f,
+                //ShadowIntensity = 0.1f,
                 BackColor = Color.White
             };
             
@@ -356,7 +356,7 @@ namespace project.Forms
             {
                 Size = new Size(600, 300),
                 Location = new Point((viewportPanel.Width - 600) / 2, (viewportPanel.Height - 300) / 2),
-                ShadowIntensity = 0.15f
+                //ShadowIntensity = 0.15f
             };
             
             var iconLabel = new Label

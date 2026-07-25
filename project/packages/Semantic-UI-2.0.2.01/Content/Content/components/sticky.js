@@ -501,13 +501,13 @@ $.fn.sticky = function(parameters) {
             else if( module.is.bottom() ) {
               if(settings.pushing) {
                 if(module.is.bound() && scroll.bottom < context.bottom ) {
-                  module.debug('Fixing bottom attached element to bottom of browser.');
+                  module.debug('Fixing bottom attached element to bottom of er.');
                   module.fixBottom();
                 }
               }
               else {
                 if(module.is.bound() && (scroll.top < context.bottom - element.height) ) {
-                  module.debug('Fixing bottom attached element to top of browser.');
+                  module.debug('Fixing bottom attached element to top of er.');
                   module.fixTop();
                 }
               }

@@ -3,7 +3,7 @@ using project.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+using Newtonsoft.Json;
 namespace project.Forms.UserCotrols.StudentSocietyControlM.EventM
 {
     public partial class FormGenerationForEvent : Form
@@ -134,7 +134,7 @@ namespace project.Forms.UserCotrols.StudentSocietyControlM.EventM
             }
 
             // Serialize form structure
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(fieldList,Newtonsoft.Json.Formatting.Indented);
+            string json = JsonConvert.SerializeObject(fieldList,Newtonsoft.Json.Formatting.Indented);
 
             // Get the selected EventID (must come from UI like dropdown or tag)
             int selectedEventId = eventId; // Replace this with actual logic

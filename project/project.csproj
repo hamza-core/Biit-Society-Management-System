@@ -33,8 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,12 +56,154 @@
     <Compile Include="check.Designer.cs">
       <DependentUpon>check.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataHandlers\Auth\DatabaseAuth.cs" />
     <Compile Include="DataHandlers\DatabaseHelper.cs" />
-    <Compile Include="DataHandlers\StudentData.cs" />
-    <Compile Include="DataHandlers\TeacherData.cs" />
+    <Compile Include="DataHandlers\ErrorLog\LogFile.cs" />
+    <Compile Include="DataHandlers\Validation.cs" />
+    <Compile Include="DataHandlers\ViewModel\BudgetRequestModelView.cs" />
+    <Compile Include="DataHandlers\ViewModel\EventFilesViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\EventImageViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\EventParticipationViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\EventViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\NotificationViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\SocietyMemberViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\SocietyTeamMembershipViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\SocietyTeamViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\SocietyViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\StudentViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\TeacherViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\TeamMembershipViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\TeamModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\UserViewModel.cs" />
+    <Compile Include="DataHandlers\ViewModel\WinnerViewModel.cs" />
+    <Compile Include="Forms\EditProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditProfile.Designer.cs">
+      <DependentUpon>EditProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ModernLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentDashboard.Designer.cs">
+      <DependentUpon>StudentDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StudentSignUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentSignUpForm.Designer.cs">
+      <DependentUpon>StudentSignUpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TeacherDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TeacherDashBoard.Designer.cs">
+      <DependentUpon>TeacherDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\EventParticipateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\EventParticipateControl.Designer.cs">
+      <DependentUpon>EventParticipateControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\Notifications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\Notifications.Designer.cs">
+      <DependentUpon>Notifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\ProfileControlM\StudentProfileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\ProfileControlM\StudentProfileControl.Designer.cs">
+      <DependentUpon>StudentProfileControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentControlM\DashboardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentControlM\DashboardControl.Designer.cs">
+      <DependentUpon>DashboardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentControlM\UpcomingEventControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentControlM\UpcomingEventControl.Designer.cs">
+      <DependentUpon>UpcomingEventControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentNotificationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentNotificationControl.Designer.cs">
+      <DependentUpon>StudentNotificationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\EventM\AddEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\EventM\AddEvent.Designer.cs">
+      <DependentUpon>AddEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\EventM\EventMainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\EventM\EventMainControl.Designer.cs">
+      <DependentUpon>EventMainControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\EventM\FormGenerationForEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\EventM\FormGenerationForEvent.Designer.cs">
+      <DependentUpon>FormGenerationForEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\AllSocietiesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\AllSocietiesControl.Designer.cs">
+      <DependentUpon>AllSocietiesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\JoinNewSocietyControlMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\JoinNewSocietyControlMain.Designer.cs">
+      <DependentUpon>JoinNewSocietyControlMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\MySocietyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\MySocietyControl.Designer.cs">
+      <DependentUpon>MySocietyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\SocietyCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\SocietyCard.Designer.cs">
+      <DependentUpon>SocietyCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\TeamControlM\TeamControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserCotrols\TeamControlM\TeamControl.Designer.cs">
+      <DependentUpon>TeamControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\SimpleQRGenerator.cs" />
     <Compile Include="Models\BudgetRequest.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventFile.cs" />
+    <Compile Include="Models\EventImages.cs" />
     <Compile Include="Models\EventParticipation.cs" />
+    <Compile Include="Models\FormField.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Society.cs" />
     <Compile Include="Models\SocietyMember.cs" />
     <Compile Include="Models\SocietyTeam.cs" />
@@ -65,14 +211,133 @@
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TeamMembership.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Winner.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.1.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Services\EventService.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Theme\Controls\CardPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\Controls\FlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\Controls\ModernTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\Controls\SidebarButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\Controls\SidebarPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\Controls\TopBarPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\Controls\ViewportPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Theme\ThemeManager.cs" />
+    <Compile Include="Utilities\Deligates.cs" />
+    <Compile Include="Utilities\NotificationService.cs" />
+    <Compile Include="Utilities\UiHelper\LoaderHelper.cs" />
+    <Compile Include="Utilities\UiHelper\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\UiHelper\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\UiHelper\MessageBoxHelper.cs" />
+    <Compile Include="Views\EventCheckInView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\EventManagementView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="check.resx">
       <DependentUpon>check.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditProfile.resx">
+      <DependentUpon>EditProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentDashboard.resx">
+      <DependentUpon>StudentDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentSignUpForm.resx">
+      <DependentUpon>StudentSignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TeacherDashBoard.resx">
+      <DependentUpon>TeacherDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\EventParticipateControl.resx">
+      <DependentUpon>EventParticipateControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\Notifications.resx">
+      <DependentUpon>Notifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\ProfileControlM\StudentProfileControl.resx">
+      <DependentUpon>StudentProfileControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentControlM\DashboardControl.resx">
+      <DependentUpon>DashboardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentControlM\UpcomingEventControl.resx">
+      <DependentUpon>UpcomingEventControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentNotificationControl.resx">
+      <DependentUpon>StudentNotificationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentSocietyControlM\EventM\AddEvent.resx">
+      <DependentUpon>AddEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentSocietyControlM\EventM\EventMainControl.resx">
+      <DependentUpon>EventMainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentSocietyControlM\EventM\FormGenerationForEvent.resx">
+      <DependentUpon>FormGenerationForEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\AllSocietiesControl.resx">
+      <DependentUpon>AllSocietiesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\JoinNewSocietyControlMain.resx">
+      <DependentUpon>JoinNewSocietyControlMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\MySocietyControl.resx">
+      <DependentUpon>MySocietyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\StudentSocietyControlM\SocietyM\SocietyCard.resx">
+      <DependentUpon>SocietyCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserCotrols\TeamControlM\TeamControl.resx">
+      <DependentUpon>TeamControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\project.check.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.EditProfile.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.LoginForm.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentControlM.DashboardControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentControlM.UpcomingEventControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentDashboard.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentSignUpForm.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentSocietyControlM.AllSocietiesControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentSocietyControlM.EventM.AddEvent.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentSocietyControlM.JoinNewSocietyControlMain.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentSocietyControlM.MySocietyControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.StudentSocietyControlM.SocietyCard.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.TeacherDashBoard.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.UserCotrols.EventParticipateControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.UserCotrols.Notifications.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.UserCotrols.StudentNotificationControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.UserCotrols.StudentProfileControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.UserCotrols.StudentSocietyControlM.EventM.EventMainControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.UserCotrols.StudentSocietyControlM.EventM.FormGenerationForEvent.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Forms.UserCotrols.TeamControlM.TeamControl.resources" />
+    <EmbeddedResource Include="obj\Debug\project.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,6 +347,73 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Utilities\UiHelper\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include=".vs\project.csproj.dtbcache.json" />
+    <None Include=".vs\project\copilot-chat\3a1b2175\sessions\05fee1ae-ed92-4691-9ae1-0799e46f5312" />
+    <None Include=".vs\project\FileContentIndex\8af6e2b1-9265-4d5c-a823-a1f219667abc.vsidx" />
+    <None Include="bin\Debug\project.exe.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\project.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\project.csproj.CopyComplete" />
+    <None Include="obj\Debug\project.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\project.csproj.GenerateResource.cache" />
+    <None Include="packages.config" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\.signature.p7s" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\Guna.UI2.WinForms.2.0.4.7.nupkg" />
+    <None Include="packages\Guna.UI2.WinForms.2.0.4.7\README.md" />
+    <None Include="packages\jQuery.1.8.1\.signature.p7s" />
+    <None Include="packages\jQuery.1.8.1\jQuery.1.8.1.nupkg" />
+    <None Include="packages\jQuery.1.8.1\Tools\common.ps1" />
+    <None Include="packages\jQuery.1.8.1\Tools\install.ps1" />
+    <None Include="packages\jQuery.1.8.1\Tools\uninstall.ps1" />
+    <None Include="packages\MaterialDesignColors.5.2.1\.signature.p7s" />
+    <None Include="packages\MaterialDesignColors.5.2.1\docs\README.md" />
+    <None Include="packages\MaterialDesignColors.5.2.1\MaterialDesignColors.5.2.1.nupkg" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\.signature.p7s" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\MaterialDesignThemes.targets" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-Black.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-BlackItalic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-Bold.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-BoldItalic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-Italic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-Light.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-LightItalic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-Medium.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-MediumItalic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-Regular.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-Thin.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\Roboto-ThinItalic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\RobotoCondensed-Bold.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\RobotoCondensed-BoldItalic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\RobotoCondensed-Italic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\RobotoCondensed-Light.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\RobotoCondensed-LightItalic.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\build\Resources\Roboto\RobotoCondensed-Regular.ttf" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\docs\README.md" />
+    <None Include="packages\MaterialDesignThemes.5.2.1\MaterialDesignThemes.5.2.1.nupkg" />
+    <None Include="packages\MaterialSkin.2.2.3.1\.signature.p7s" />
+    <None Include="packages\MaterialSkin.2.2.3.1\MaterialSkin.2.2.3.1.nupkg" />
+    <None Include="packages\MaterialSkin.2.2.3.1\README.md" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\.signature.p7s" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\Microsoft.Xaml.Behaviors.Wpf.1.1.39.nupkg" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\tools\Install.ps1" />
+    <None Include="packages\Newtonsoft.Json.13.0.3\.signature.p7s" />
+    <None Include="packages\Newtonsoft.Json.13.0.3\LICENSE.md" />
+    <None Include="packages\Newtonsoft.Json.13.0.3\Newtonsoft.Json.13.0.3.nupkg" />
+    <None Include="packages\Newtonsoft.Json.13.0.3\README.md" />
+    <None Include="packages\Semantic-UI-2.0.2.01\.signature.p7s" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\basic\assets\fonts\icons.eot" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\basic\assets\fonts\icons.ttf" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\basic\assets\fonts\icons.woff" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\default\assets\fonts\icons.eot" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\default\assets\fonts\icons.otf" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\default\assets\fonts\icons.ttf" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\default\assets\fonts\icons.woff" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\default\assets\fonts\icons.woff2" />
+    <None Include="packages\Semantic-UI-2.0.2.01\Semantic-UI-2.0.2.01.nupkg" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,6 +426,201 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\MaterialDesignThemes.Wpf.xml" />
+    <Content Include="bin\Debug\Microsoft.Xaml.Behaviors.xml" />
+    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="obj\Debug\project.csproj.FileListAbsolute.txt" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\icon.png" />
+    <Content Include="packages\Guna.UI2.WinForms.2.0.4.7\LICENSE.txt" />
+    <Content Include="packages\jQuery.1.8.1\Content\Scripts\jquery-1.8.1-vsdoc.js" />
+    <Content Include="packages\jQuery.1.8.1\Content\Scripts\jquery-1.8.1.js" />
+    <Content Include="packages\jQuery.1.8.1\Content\Scripts\jquery-1.8.1.min.js" />
+    <Content Include="packages\jQuery.1.8.1\Tools\jquery-1.8.1.intellisense.js" />
+    <Content Include="packages\MaterialDesignColors.5.2.1\images\MaterialDesignColors.Icon.png" />
+    <Content Include="packages\MaterialDesignThemes.5.2.1\images\MaterialDesignThemes.Icon.png" />
+    <Content Include="packages\MaterialDesignThemes.5.2.1\lib\net462\MaterialDesignThemes.Wpf.xml" />
+    <Content Include="packages\MaterialDesignThemes.5.2.1\lib\net6.0\MaterialDesignThemes.Wpf.xml" />
+    <Content Include="packages\MaterialDesignThemes.5.2.1\lib\net8.0\MaterialDesignThemes.Wpf.xml" />
+    <Content Include="packages\MaterialDesignThemes.5.2.1\tools\VisualStudioToolsManifest.xml" />
+    <Content Include="packages\MaterialSkin.2.2.3.1\nugetIcon.png" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.xml" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.xml" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\netcoreapp3.1\Microsoft.Xaml.Behaviors.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\net6.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\netstandard1.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\netstandard1.3\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\netstandard2.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.3\packageIcon.png" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\accordion.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\accordion.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\accordion.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\accordion.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\ad.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\ad.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\api.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\api.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\breadcrumb.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\breadcrumb.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\button.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\button.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\card.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\card.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\checkbox.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\checkbox.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\checkbox.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\checkbox.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\colorize.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\colorize.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\comment.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\comment.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\container.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\container.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\dimmer.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\dimmer.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\dimmer.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\dimmer.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\divider.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\divider.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\dropdown.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\dropdown.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\dropdown.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\dropdown.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\embed.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\embed.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\embed.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\embed.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\feed.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\feed.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\flag.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\flag.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\form.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\form.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\form.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\form.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\grid.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\grid.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\header.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\header.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\icon.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\icon.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\image.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\image.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\input.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\input.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\item.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\item.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\label.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\label.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\list.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\list.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\loader.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\loader.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\menu.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\menu.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\message.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\message.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\modal.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\modal.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\modal.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\modal.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\nag.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\nag.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\nag.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\nag.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\popup.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\popup.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\popup.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\popup.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\progress.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\progress.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\progress.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\progress.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\rail.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\rail.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\rating.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\rating.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\rating.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\rating.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\reset.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\reset.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\reveal.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\reveal.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\search.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\search.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\search.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\search.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\segment.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\segment.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\shape.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\shape.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\shape.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\shape.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\sidebar.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\sidebar.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\sidebar.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\sidebar.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\site.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\site.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\site.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\site.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\state.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\state.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\statistic.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\statistic.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\step.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\step.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\sticky.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\sticky.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\sticky.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\sticky.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\tab.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\tab.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\tab.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\tab.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\table.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\table.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\transition.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\transition.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\transition.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\transition.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\video.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\video.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\video.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\video.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\visibility.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\visibility.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\visit.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\components\visit.min.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\semantic.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\semantic.min.css" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\basic\assets\fonts\icons.svg" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\default\assets\fonts\icons.svg" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Content\themes\default\assets\images\flags.png" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Scripts\semantic.js" />
+    <Content Include="packages\Semantic-UI-2.0.2.01\Content\Scripts\semantic.min.js" />
+    <Content Include="Resources\Images\11644082.png" />
+    <Content Include="Resources\Images\20944371.jpg" />
+    <Content Include="Resources\Images\64c07cd56fee2c3b0423168c5b10e58c.png" />
+    <Content Include="Resources\Images\7559129.jpg" />
+    <Content Include="Resources\Images\images %281%29.jpeg" />
+    <Content Include="Resources\Images\images %282%29.jpeg" />
+    <Content Include="Resources\Images\images %282%291.jpeg" />
+    <Content Include="Resources\Images\images %283%29.jpeg" />
+    <Content Include="Resources\Images\images.png" />
+    <Content Include="Resources\Images\Picture1.png" />
+    <Content Include="Resources\Images\PikPng.com_selfie-icon-png_4733362.png" />
+    <Content Include="Resources\Images\pngwing.com.png" />
+    <Content Include="Resources\Images\teacher.1024x1022.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\project\v18\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

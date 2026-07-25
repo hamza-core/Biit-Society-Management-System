@@ -70,16 +70,17 @@ namespace project.Forms.StudentControlM
 
         private void button2_Click(object sender, EventArgs e)
         {
-            List<EventFile> files = EventFilesViewModel.GetEventFilesByEventId(ex.EventID)
+            FolderBrowserDialog foldererDialog1 = new FolderBrowserDialog();
+            List <EventFile> files = EventFilesViewModel.GetEventFilesByEventId(ex.EventID)
           ; if (files.Count > 0)
             {
 
                 if (files.Count == 1)
                 {
-                    if (DialogResult.OK == folderBrowserDialog1.ShowDialog())
+                    if (DialogResult.OK == foldererDialog1.ShowDialog())
                     {
                         string fileName = files[0].FileName;
-                        string destinationPath =Path.Combine(folderBrowserDialog1.SelectedPath, files[0].FileName );
+                        string destinationPath =Path.Combine(foldererDialog1.SelectedPath, files[0].FileName );
 
                         File.Copy(files[0].FilePath, destinationPath);
                         MessageBoxHelper.ShowInfo("File Downloaded Successfully ");
@@ -91,13 +92,13 @@ namespace project.Forms.StudentControlM
                 else
                 {
                     MessageBoxHelper.ShowInfo("Multiple File Exists ");
-                    if (DialogResult.OK == folderBrowserDialog1.ShowDialog())
+                    if (DialogResult.OK == foldererDialog1.ShowDialog())
                     {
 
                         foreach (var file in files)
                         {
                             string fileName = file.FileName;
-                            string destinationPath = Path.Combine(folderBrowserDialog1.SelectedPath, fileName);
+                            string destinationPath = Path.Combine(foldererDialog1.SelectedPath, fileName);
 
                             File.Copy(destinationPath, file.FilePath);
                             MessageBoxHelper.ShowInfo("All Files Downloaded Successfully ");

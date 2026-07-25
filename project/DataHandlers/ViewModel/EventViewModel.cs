@@ -19,8 +19,8 @@ namespace project.DataHandlers.ViewModel
                 { "@Venue", ev.Venue }
             };
 
-            DataTable clashResult = DatabaseHelper.ExecuteSelect(clashQuery, clashParams);
-            if (clashResult.Rows.Count > 0 && Convert.ToInt32(clashResult.Rows[0][0]) > 0)
+            List<DataRow> clashResult = DatabaseHelper.ExecuteSelect(clashQuery, clashParams);
+            if (clashResult.Count > 0 && Convert.ToInt32(clashResult[0][0]) > 0)
                 return false;
 
             string query = @"INSERT INTO Event 
@@ -50,7 +50,7 @@ namespace project.DataHandlers.ViewModel
         public static List<Event> GetAllEvents()
         {
             string query = "SELECT * FROM Event WHERE IsDeleted = 0";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query);
             return MapEventsFromDataTable(dt);
         }
 
@@ -104,10 +104,10 @@ namespace project.DataHandlers.ViewModel
             string query = "SELECT * FROM Event WHERE Title = @Title AND IsDeleted = 0";
             var parameters = new Dictionary<string, object> { { "@Title", title } };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
-            if (dt.Rows.Count > 0)
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            if (dt.Count > 0)
             {
-                DataRow row = dt.Rows[0];
+                DataRow row = dt[0];
                 return new Event
                 {
                     EventID = Convert.ToInt32(row["EventID"]),
@@ -136,7 +136,7 @@ namespace project.DataHandlers.ViewModel
                              ORDER BY EventDate ASC";
 
             var parameters = new Dictionary<string, object> { { "@status", status } };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             return MapEventsFromDataTable(dt);
         }
 
@@ -152,7 +152,7 @@ namespace project.DataHandlers.ViewModel
             ORDER BY e.EventDate ASC;";
 
             var parameters = new Dictionary<string, object> { { "@AridNo", aridNo } };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             return MapEventsFromDataTable(dt);
         }
 
@@ -162,7 +162,7 @@ namespace project.DataHandlers.ViewModel
                              WHERE EventDate >= CAST(GETDATE() AS DATE) AND EventApprovalStatus = 'Approved' AND IsDeleted = 0 
                              ORDER BY EventDate ASC";
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query);
             return MapEventsFromDataTable(dt);
         }
 
@@ -173,7 +173,7 @@ namespace project.DataHandlers.ViewModel
                              AND EventApprovalStatus = 'Approved' AND IsDeleted = 0 ORDER BY EventDate DESC";
 
             var parameters = new Dictionary<string, object> { { "@SocietyID", societyId } };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             return MapEventsFromDataTable(dt);
         }
 
@@ -184,8 +184,8 @@ namespace project.DataHandlers.ViewModel
                              AND EventApprovalStatus = 'Approved'AND TeamRequirement in ('Optional','Required') AND IsDeleted = 0 ORDER BY EventDate DESC";
 
             var parameters = new Dictionary<string, object> { { "@SocietyID", societyId } };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
-            return MapEventsFromDataTable(dt);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            return MapEventsFromDataTable   (dt);
         }
 
         public static List<Event> GetAllEventsBySociety(int societyId)
@@ -194,7 +194,7 @@ namespace project.DataHandlers.ViewModel
                              WHERE SocietyID = @SocietyID AND IsDeleted = 0 ORDER BY EventDate DESC";
 
             var parameters = new Dictionary<string, object> { { "@SocietyID", societyId } };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             return MapEventsFromDataTable(dt);
         }
 
@@ -205,7 +205,7 @@ namespace project.DataHandlers.ViewModel
                              ORDER BY EventDate DESC";
 
             var parameters = new Dictionary<string, object> { { "@SocietyID", societyId } };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             return MapEventsFromDataTable(dt);
         }
 
@@ -216,7 +216,7 @@ namespace project.DataHandlers.ViewModel
                              ORDER BY EventDate DESC";
 
             var parameters = new Dictionary<string, object> { { "@SocietyID", societyId } };
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             return MapEventsFromDataTable(dt);
         }
 
@@ -245,10 +245,10 @@ namespace project.DataHandlers.ViewModel
             return DatabaseHelper.ExecuteDelete(query, parameters) > 0;
         }
 
-        private static List<Event> MapEventsFromDataTable(DataTable dt)
+        private static List<Event> MapEventsFromDataTable(List<DataRow> dt)
         {
             var events = new List<Event>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 events.Add(new Event
                 {
@@ -265,7 +265,7 @@ namespace project.DataHandlers.ViewModel
                     IsDeleted = Convert.ToBoolean(row["IsDeleted"]),
                     EventApprovalStatus = row["EventApprovalStatus"].ToString(),
                     EventApprovalDate = row["EventApprovalDate"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(row["EventApprovalDate"]),
-                    FormStructure = row["FormStructure"] == DBNull.Value ? "" : row["FormStructure"].ToString()
+                    FormStructure = row["FormStructure"] == DBNull.Value ? null : (List<FormField>) row["FormStructure"]
                  ,
                     TeamRequired = row["TeamRequirement"] == DBNull.Value ? "" : row["TeamRequirement"].ToString()
 

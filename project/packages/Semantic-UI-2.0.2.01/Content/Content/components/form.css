@@ -130,7 +130,7 @@
   line-height: 1.2857;
   resize: vertical;
 }
-.ui.form textarea:not([rows]) {
+.ui.form textarea:not(]) {
   height: 12em;
   min-height: 8em;
   max-height: 24em;
@@ -257,7 +257,7 @@
 ---------------------*/
 
 
-/* browsers require these rules separate */
+/* ers require these rules separate */
 .ui.form ::-webkit-input-placeholder {
   color: rgba(140, 140, 140, 0.87);
 }

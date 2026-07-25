@@ -554,7 +554,7 @@ $.fn.modal = function(parameters) {
           scrolling: function() {
             return $dimmable.hasClass(className.scrolling);
           },
-          modernBrowser: function() {
+          moderner: function() {
             // appName for IE11 reports 'Netscape' can no longer use
             return !(window.ActiveXObject || "ActiveXObject" in window);
           }

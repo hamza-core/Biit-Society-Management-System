@@ -32,8 +32,8 @@ namespace project.DataHandlers
                     sqlCommand.Parameters.AddWithValue(p.Key, p.Value);
                 }
 
-                int affectedRows = sqlCommand.ExecuteNonQuery();
-                return affectedRows;
+                int affecte = sqlCommand.ExecuteNonQuery();
+                return affecte;
             }
             catch (Exception ex)
             {
@@ -57,8 +57,8 @@ namespace project.DataHandlers
                 {
                     command.Parameters.AddWithValue(param.Key, param.Value);
                 }
-                int affectedRows = command.ExecuteNonQuery();
-                return affectedRows;
+                int affecte = command.ExecuteNonQuery();
+                return affecte;
             }
             catch (Exception e)
             {
@@ -82,8 +82,8 @@ namespace project.DataHandlers
                 {
                     command.Parameters.AddWithValue(param.Key, param.Value);
                 }
-                int affectedRows = command.ExecuteNonQuery();
-                return affectedRows;
+                int affecte = command.ExecuteNonQuery();
+                return affecte;
             }
             catch (Exception e)
             {
@@ -148,7 +148,7 @@ namespace project.DataHandlers
             }
         }
 
-        public static List<DataRow> ExecuteSelect(string query, Dictionary<string, object> parameters)
+        public static List<DataRow> ExecuteSelect(string query, Dictionary<string, object> parameters = null)
         {
             SqlConnection connection = GetConnection();
             List<DataRow> results = new List<DataRow>();
@@ -197,9 +197,9 @@ namespace project.DataHandlers
                     sqlCommand.Parameters.AddWithValue(p.Key, p.Value);
                 }
 
-                int affectedRows = sqlCommand.ExecuteNonQuery();
+                int affecte = sqlCommand.ExecuteNonQuery();
 
-                if (affectedRows > 0)
+                if (affecte > 0)
                 {
                     MessageBoxHelper.ShowInfo("Record Inserted in the DataBase");
                     return true;
@@ -274,9 +274,9 @@ namespace project.DataHandlers
                 {
                     command.Parameters.AddWithValue(param.Key, param.Value);
                 }
-                int affectedRows = command.ExecuteNonQuery();
+                int affecte = command.ExecuteNonQuery();
 
-                return affectedRows > 0 ? true : false;
+                return affecte > 0 ? true : false;
 
             }
             catch (Exception e)
@@ -302,9 +302,9 @@ namespace project.DataHandlers
                 {
                     command.Parameters.AddWithValue(param.Key, param.Value);
                 }
-                int affectedRows = command.ExecuteNonQuery();
+                int affecte = command.ExecuteNonQuery();
 
-                return affectedRows > 0 ? true : false;
+                return affecte > 0 ? true : false;
 
             }
             catch (Exception e)

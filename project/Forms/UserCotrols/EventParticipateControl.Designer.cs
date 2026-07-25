@@ -166,8 +166,8 @@
             this.tableDynamicForm.Location = new System.Drawing.Point(0, 0);
             this.tableDynamicForm.Name = "tableDynamicForm";
             this.tableDynamicForm.RowCount = 2;
-            this.tableDynamicForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableDynamicForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            //this.tableDynamicFormtyles.Add(new System.Windows.Formstyle(System.Windows.Forms.SizeType.Percent, 50F));
+            //this.tableDynamicFormtyles.Add(new System.Windows.Formstyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableDynamicForm.Size = new System.Drawing.Size(650, 634);
             this.tableDynamicForm.TabIndex = 0;
             // 

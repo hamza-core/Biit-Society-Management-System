@@ -42,7 +42,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.txtAridNo = new System.Windows.Forms.TextBox();
             this.lblErrorName = new System.Windows.Forms.Label();
@@ -218,10 +217,7 @@
             this.label3.Text = "BIIT Society Management System";
             // 
             // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 15;
-            this.guna2Elipse1.TargetControl = this;
-            // 
+           
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
@@ -485,7 +481,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtAridNo;
         private System.Windows.Forms.Label lblErrorName;

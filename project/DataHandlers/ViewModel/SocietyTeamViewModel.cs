@@ -51,10 +51,10 @@ namespace project.DataHandlers
                 string query = "SELECT * FROM SocietyTeam WHERE SocietyID = @SocietyID AND IsDeleted = 0";
                 var parameters = new Dictionary<string, object> { { "@SocietyID", societyId } };
 
-                DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+                List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
                 List<SocietyTeam> teams = new List<SocietyTeam>();
 
-                foreach (DataRow row in dt.Rows)
+                foreach (DataRow row in dt)
                 {
                     teams.Add(new SocietyTeam
                     {

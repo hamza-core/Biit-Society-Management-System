@@ -197,7 +197,7 @@
              on top of the text inside the <see cref="P:MaterialDesignThemes.Wpf.SmartHint.FloatingTarget"/>.
             
              There is an edge case that need to be dealt with, which is when the host element allows for text to wrap (i.e. in
-             <see cref="T:System.Windows.Controls.TextBox"/> based templates). In this case, we need to take the  number of text rows/line count into account
+             <see cref="T:System.Windows.Controls.TextBox"/> based templates). In this case, we need to take the  number of text/line count into account
              in the calculation.
              </summary>
         </member>

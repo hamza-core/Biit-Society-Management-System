@@ -26,15 +26,15 @@ intellisense.annotate(jQuery, {
     /// </signature>
   },
   'boxModel': function() {
-    /// <summary>Deprecated in jQuery 1.3 (see jQuery.support). States if the current page, in the user's browser, is being rendered using the W3C CSS Box Model.</summary>
+    /// <summary>Deprecated in jQuery 1.3 (see jQuery.support). States if the current page, in the user's er, is being rendered using the W3C CSS Box Model.</summary>
     /// <returns type="Boolean" />
   },
-  'browser': function() {
-    /// <summary>Contains flags for the useragent, read from navigator.userAgent. We recommend against using this property; please try to use feature detection instead (see jQuery.support). jQuery.browser may be moved to a plugin in a future release of jQuery.</summary>
+  'er': function() {
+    /// <summary>Contains flags for the useragent, read from navigator.userAgent. We recommend against using this property; please try to use feature detection instead (see jQuery.support). jQuery.er may be moved to a plugin in a future release of jQuery.</summary>
     /// <returns type="Map" />
   },
-  'browser.version': function() {
-    /// <summary>The version number of the rendering engine for the user's browser.</summary>
+  'er.version': function() {
+    /// <summary>The version number of the rendering engine for the user's er.</summary>
     /// <returns type="String" />
   },
   'Callbacks': function() {
@@ -85,7 +85,7 @@ intellisense.annotate(jQuery, {
   },
   'error': function() {
     /// <signature>
-    ///   <summary>Takes a string and throws an exception containing it.</summary>
+    ///   <summary>Takes a string and t an exception containing it.</summary>
     ///   <param name="message" type="String">The message to send out.</param>
     /// </signature>
   },
@@ -343,7 +343,7 @@ intellisense.annotate(jQuery, {
     /// <returns type="jQuery" />
   },
   'support': function() {
-    /// <summary>A collection of properties that represent the presence of different browser features or bugs. Primarily intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</summary>
+    /// <summary>A collection of properties that represent the presence of different er features or bugs. Primarily intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance.</summary>
     /// <returns type="Object" />
   },
   'trim': function() {
@@ -628,7 +628,7 @@ intellisense.annotate(jQuery.Event.prototype, {
     /// <returns type="Element" />
   },
   'timeStamp': function() {
-    /// <summary>The difference in milliseconds between the time the browser created the event and January 1, 1970.</summary>
+    /// <summary>The difference in milliseconds between the time the er created the event and January 1, 1970.</summary>
     /// <returns type="Number" />
   },
   'type': function() {

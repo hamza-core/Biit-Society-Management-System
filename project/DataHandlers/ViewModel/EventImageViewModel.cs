@@ -56,10 +56,10 @@ namespace project.DataHandlers.ViewModel
                 { "@EventId", EventId }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<EventImage> eventImages = new List<EventImage>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 eventImages.Add(new EventImage
                 {
@@ -106,10 +106,10 @@ namespace project.DataHandlers.ViewModel
         public static List<EventImage> GetAllEventImages()
         {
             string query = "SELECT * FROM EventImages";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, null);
+          List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, null);
 
             List<EventImage> eventImages = new List<EventImage>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 eventImages.Add(new EventImage
                 {
@@ -132,10 +132,10 @@ namespace project.DataHandlers.ViewModel
                 { "@ImageName", "%" + imageName + "%" }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+           List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<EventImage> eventImages = new List<EventImage>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 eventImages.Add(new EventImage
                 {

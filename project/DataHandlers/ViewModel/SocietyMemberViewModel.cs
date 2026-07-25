@@ -53,10 +53,10 @@ namespace project.DataHandlers
         public static List<SocietyMember> GetAllMembers()
         {
             string query = "SELECT * FROM SocietyMember WHERE IsDeleted = 0 and isApproved = 1";
-            DataTable dt = DatabaseHelper.ExecuteSelect(query);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query ,null);
 
             List<SocietyMember> members = new List<SocietyMember>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyMember
                 {
@@ -76,10 +76,10 @@ namespace project.DataHandlers
             string query = "SELECT * FROM SocietyMember WHERE SocietyId = @id and IsDeleted = 0 and isApproved = 0";
           
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query,new Dictionary<string, object> { {"@id" ,id} });
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query,new Dictionary<string, object> { {"@id" ,id} });
 
             List<SocietyMember> members = new List<SocietyMember>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyMember
                 {
@@ -103,10 +103,10 @@ namespace project.DataHandlers
                 { "@SocietyID", societyId }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<SocietyMember> members = new List<SocietyMember>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyMember
                 {
@@ -129,10 +129,10 @@ namespace project.DataHandlers
                 { "@memID", Id }
             };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
 
             List<SocietyMember> members = new List<SocietyMember>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyMember
                 {
@@ -155,9 +155,9 @@ namespace project.DataHandlers
                 {"@SocietyId",societyId }
     };
 
-            DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
             List<SocietyMember> members = new List<SocietyMember>();
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyMember
                 {
@@ -184,10 +184,10 @@ namespace project.DataHandlers
              { "@SocietyID", societyId }
          };
 
-                 DataTable dt = DatabaseHelper.ExecuteSelect(query, parameters);
+                 List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
                  List<SocietyMemberWithStudent> result = new List<SocietyMemberWithStudent>();
 
-                 foreach (DataRow row in dt.Rows)
+                 foreach (DataRow row in dt)
                  {
                      result.Add(new SocietyMemberWithStudent
                      {
@@ -263,10 +263,10 @@ namespace project.DataHandlers
                 { "@AridNo", aridNo },
             };
 
-            DataTable  dataTable= DatabaseHelper.ExecuteSelect(query, parameters);
-            if (dataTable == null) return null;
+            List<DataRow>  dt= DatabaseHelper.ExecuteSelect(query, parameters);
+            if (dt == null) return null;
             List<SocietyMember> members = new List<SocietyMember>();
-            foreach (DataRow row in dataTable.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyMember
                 {
@@ -288,10 +288,10 @@ namespace project.DataHandlers
                 { "@AridNo", aridNo },
             };
 
-            DataTable dataTable = DatabaseHelper.ExecuteSelect(query, parameters);
-            if (dataTable == null) return null;
+            List<DataRow> dt = DatabaseHelper.ExecuteSelect(query, parameters);
+            if (dt == null) return null;
             List<SocietyMember> members = new List<SocietyMember>();
-            foreach (DataRow row in dataTable.Rows)
+            foreach (DataRow row in dt)
             {
                 members.Add(new SocietyMember
                 {
@@ -331,7 +331,7 @@ namespace project.DataHandlers
                 Phone = row["PhoneNo"].ToString(),
                 Department = row["Department"].ToString(),
                 Password = row["Password"].ToString(),
-                IsDeleted = row["isDeleted"].ToString()
+                IsDeleted = bool.Parse(row["isDeleted"].ToString())
             };
         }
 

@@ -39,7 +39,6 @@
             this.btnMySocieties = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
             this.process1 = new System.Diagnostics.Process();
             this.pnlSideBar.SuspendLayout();
@@ -242,7 +241,6 @@
             // 
             // guna2Elipse1
             // 
-            this.guna2Elipse1.BorderRadius = 15;
             // 
             // pnlMain
             // 
@@ -293,7 +291,6 @@
         private System.Windows.Forms.Button btnMySocieties;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.Button btnProfile;
         private System.Windows.Forms.Button btnNotification;
         private System.Windows.Forms.Button btnTeam;

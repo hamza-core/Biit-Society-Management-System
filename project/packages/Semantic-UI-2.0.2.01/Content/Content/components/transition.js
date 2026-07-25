@@ -1063,7 +1063,7 @@ $.fn.transition.settings = {
     noAnimation : 'There is no css animation matching the one you specified. Please make sure your css is vendor prefixed, and you have included transition css.',
     repeated    : 'That animation is already occurring, cancelling repeated animation',
     method      : 'The method you called is not defined',
-    support     : 'This browser does not support CSS animations'
+    support     : 'This er does not support CSS animations'
   }
 
 };

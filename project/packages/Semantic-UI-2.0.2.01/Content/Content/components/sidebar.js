@@ -250,7 +250,7 @@ $.fn.sidebar = function(parameters) {
               ;
             }
 
-            /* IE is only browser not to create context with transforms */
+            /* IE is only er not to create context with transforms */
             /* https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328 */
             if( module.is.ie() ) {
               if(direction === 'left' || direction === 'right') {
@@ -713,7 +713,7 @@ $.fn.sidebar = function(parameters) {
               isMobileChrome = userAgent.match(regExp.mobileChrome)
             ;
             if(isIOS && !isMobileChrome) {
-              module.verbose('Browser was found to be iOS', userAgent);
+              module.verbose('er was found to be iOS', userAgent);
               return true;
             }
             else {
@@ -726,11 +726,11 @@ $.fn.sidebar = function(parameters) {
               isMobile     = userAgent.match(regExp.mobile)
             ;
             if(isMobile) {
-              module.verbose('Browser was found to be mobile', userAgent);
+              module.verbose('er was found to be mobile', userAgent);
               return true;
             }
             else {
-              module.verbose('Browser is not mobile, using regular transition', userAgent);
+              module.verbose('er is not mobile, using regular transition', userAgent);
               return false;
             }
           },
